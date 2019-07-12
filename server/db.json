@@ -1,0 +1,24 @@
+{
+  "groups": [
+    { "name": "Resources",
+      "items": [
+        { "title": "Google",
+          "href": "http://www.google.com"
+        },
+        { "title": "Microsoft",
+          "href": "http://www.microsoft.com"
+        }
+      ]
+    },
+    { "name": "Development",
+      "items": [
+        { "title": "Scotch IO",
+          "href": "http://www.scotch.io"
+        },
+        { "title": "Angular",
+          "href": "http://www.angulario.com"
+        }
+      ]
+    }
+  ]
+}
