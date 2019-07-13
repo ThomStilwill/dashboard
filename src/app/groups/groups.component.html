@@ -1,8 +1,7 @@
-
-<h2>Groups</h2>
-<ng-container cdkDropListGroup>
+<div cdkDropListGroup class="groups">
+  <h2>Groups</h2>
   <div  class="example-container" *ngFor="let group of groups">
     <div>{{group.name}}</div>
     <app-group [group]="group" (onchange)="onchange()"></app-group>
   </div>
-</ng-container>
+</div>

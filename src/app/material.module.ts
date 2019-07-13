@@ -45,6 +45,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   exports: [
+    BrowserAnimationsModule,
     A11yModule,
     CdkStepperModule,
     CdkTableModule,
@@ -87,7 +88,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    BrowserAnimationsModule,
     MatFormFieldModule
   ]
 })

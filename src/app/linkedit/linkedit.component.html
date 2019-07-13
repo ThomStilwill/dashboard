@@ -7,6 +7,13 @@
     <input matInput formControlName="href" placeholder="Href">
   </mat-form-field>
 
-  <button mat-button type="reset" (click)="onCancel()">Cancel</button>
-  <button mat-button type="submit">Save</button>
+  <div class="buttonbar">
+    <button mat-icon-button type="reset" (click)="onCancel()"  title="Cancel">
+        <i class="material-icons">clear</i>
+    </button>
+    <button mat-icon-button type="submit" title="Save">
+        <i class="material-icons">check</i>
+    </button>
+  </div>
+
 </form>

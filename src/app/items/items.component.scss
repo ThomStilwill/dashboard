@@ -6,13 +6,15 @@
   border-radius: 4px;
   overflow: hidden;
   display: block;
+  padding-inline-start: 0px;
 }
 
 .example-box {
-  padding: 20px 10px;
+  padding: 10px;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
-  display: flex;
+  //display: flex;
+  display:  -webkit-box;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -20,6 +22,20 @@
   cursor: move;
   background: white;
   font-size: 14px;
+
+  .item-content {
+    width: 270px;
+    .title{
+      font-size: 1.2em;
+    }
+    .href {
+      color: #555;
+    }
+  }
+
+  button {
+    flex: 1;
+  }
 }
 
 .cdk-drag-preview {

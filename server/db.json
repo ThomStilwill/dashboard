@@ -5,16 +5,16 @@
       "name": "Resources",
       "items": [
         {
-          "title": "Google",
-          "href": "http://www.google.com"
-        },
-        {
-          "title": "Scotch IO",
-          "href": "http://www.scotch.io"
+          "title": "Yahoo",
+          "href": "www.yahoo.com"
         },
         {
           "title": "Microsoft",
           "href": "http://www.microsoft.com"
+        },
+        {
+          "title": "Google",
+          "href": "http://www.google.com"
         }
       ]
     },
@@ -23,12 +23,16 @@
       "name": "Development",
       "items": [
         {
-          "title": "Yahoo",
-          "href": "www.yahoo.com"
+          "title": "Scotch IO",
+          "href": "http://www.scotch.io"
         },
         {
           "title": "Angular",
           "href": "http://www.angulario.com"
+        },
+        {
+          "title": "Material Icons",
+          "href": "https://google.github.io/material-design-icons/"
         }
       ]
     }
