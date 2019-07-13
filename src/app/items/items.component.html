@@ -1,6 +1,12 @@
+<button (click)="editing=true" *ngIf="!editing">+</button>
+<app-linkedit *ngIf="editing" (submitted)="onSubmit($event)" (cancelled)="onCancel($event)" [item]="selecteditem"></app-linkedit>
+
 <ul class="example-list"
     cdkDropList
     [cdkDropListData]="items"
     (cdkDropListDropped)="drop($event)">
-  <li class="example-box" cdkDrag *ngFor="let item of items">{{item.title}}</li>
+  <li class="example-box" cdkDrag *ngFor="let item of items; let i = index">{{item.title}}
+    <button type="button" (click)="delete(i)">Delete</button>
+    <button type="button" (click)="edit(i,item)">Edit</button>
+  </li>
 </ul>

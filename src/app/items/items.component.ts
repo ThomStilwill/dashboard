@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { GroupsService } from '../services/groups.service';
 
@@ -10,10 +10,45 @@ import { GroupsService } from '../services/groups.service';
 export class ItemsComponent implements OnInit {
 
   @Input() items: any;
+  selecteditem: any;
+  selectedindex: any;
+
+  editing = false;
+  update = false;
 
   constructor(private service: GroupsService) { }
 
   ngOnInit() {
+  }
+
+  edit(index, item: any) {
+    this.selecteditem = item;
+    this.selectedindex = index;
+    this.update = true;
+    this.editing = true;
+  }
+
+  delete(index) {
+    this.items.splice(index, 1);
+    this.service.save();
+  }
+
+  onSubmit(data) {
+    if (this.update) {
+      this.items[this.selectedindex] = data;
+    } else {
+      this.items.push(data);
+    }
+    this.service.save();
+  }
+
+  onCancel() {
+    this.done();
+  }
+
+  done () {
+    this.editing = false;
+    this.update = false;
   }
 
   drop(event: CdkDragDrop<string[]>) {

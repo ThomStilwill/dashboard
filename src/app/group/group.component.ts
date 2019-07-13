@@ -9,21 +9,10 @@ import { GroupsService } from '../services/groups.service';
 export class GroupComponent implements OnInit {
 
   @Input() group: any;
-  editing = false;
 
   constructor(private service: GroupsService) { }
 
   ngOnInit() {
-  }
-
-  onSubmit(data) {
-    this.group.items.push(data);
-    this.service.save();
-    this.editing = false;
-  }
-
-  onCancel() {
-    this.editing = false;
   }
 
 }

@@ -10,6 +10,8 @@ export class LinkeditComponent implements OnInit {
 
   @Output() submitted = new EventEmitter();
   @Output() cancelled = new EventEmitter();
+  @Input() item;
+
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -21,6 +23,10 @@ export class LinkeditComponent implements OnInit {
    }
 
   ngOnInit() {
+    const title = this.item && this.item.title || '';
+    const href = this.item && this.item.href || '';
+    this.form.controls.title.setValue(title);
+    this.form.controls.href.setValue(href);
   }
 
   onSubmit() {

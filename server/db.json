@@ -15,10 +15,6 @@
         {
           "title": "Microsoft",
           "href": "http://www.microsoft.com"
-        },
-        {
-          "title": "aasdasd",
-          "href": "asdasdasd"
         }
       ]
     },
@@ -27,8 +23,8 @@
       "name": "Development",
       "items": [
         {
-          "title": "asdasd",
-          "href": "asdasdasdasd"
+          "title": "Yahoo",
+          "href": "www.yahoo.com"
         },
         {
           "title": "Angular",
