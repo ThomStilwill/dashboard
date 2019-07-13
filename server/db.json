@@ -1,21 +1,29 @@
 {
   "groups": [
-    { "name": "Resources",
+    {
+      "id": 1,
+      "name": "Resources",
       "items": [
-        { "title": "Google",
-          "href": "http://www.google.com"
-        },
-        { "title": "Microsoft",
-          "href": "http://www.microsoft.com"
+        {
+          "title": "Scotch IO",
+          "href": "http://www.scotch.io"
         }
       ]
     },
-    { "name": "Development",
+    {
+      "id": 2,
+      "name": "Development",
       "items": [
-        { "title": "Scotch IO",
-          "href": "http://www.scotch.io"
+        {
+          "title": "Google",
+          "href": "http://www.google.com"
         },
-        { "title": "Angular",
+        {
+          "title": "Microsoft",
+          "href": "http://www.microsoft.com"
+        },
+        {
+          "title": "Angular",
           "href": "http://www.angulario.com"
         }
       ]
