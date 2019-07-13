@@ -5,8 +5,20 @@
       "name": "Resources",
       "items": [
         {
+          "title": "Google",
+          "href": "http://www.google.com"
+        },
+        {
           "title": "Scotch IO",
           "href": "http://www.scotch.io"
+        },
+        {
+          "title": "Microsoft",
+          "href": "http://www.microsoft.com"
+        },
+        {
+          "title": "aasdasd",
+          "href": "asdasdasd"
         }
       ]
     },
@@ -15,12 +27,8 @@
       "name": "Development",
       "items": [
         {
-          "title": "Google",
-          "href": "http://www.google.com"
-        },
-        {
-          "title": "Microsoft",
-          "href": "http://www.microsoft.com"
+          "title": "asdasd",
+          "href": "asdasdasdasd"
         },
         {
           "title": "Angular",

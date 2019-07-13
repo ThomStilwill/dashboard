@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { GroupsService } from '../services/groups.service';
 
 
 @Component({
@@ -11,25 +11,14 @@ export class GroupsComponent implements OnInit {
 
   groups: any;
 
-  constructor(private http: HttpClient) {
-    this.http.get('api/groups').subscribe(data => {
-      this.groups = data;
+
+  constructor(private service: GroupsService) {
+    this.service.load().add(() => {
+      this.groups = service.groups;
     });
   }
 
   ngOnInit() {
   }
 
-  onchange(event) {
-    console.log(this.groups);
-
-    this.groups.forEach(group => {
-      const groupjson = JSON.stringify(group);
-
-      this.http.put('api/groups/' + group.id, groupjson , { headers: { 'Content-Type': 'application/json' } }).subscribe(result => {
-        console.log(result);
-      });
-    });
-
-  }
 }

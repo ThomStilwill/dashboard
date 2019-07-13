@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="title" placeholder="Title">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="href" placeholder="Href">
+  </mat-form-field>
+
+  <button mat-button type="reset" (click)="onCancel()">Cancel</button>
+  <button mat-button type="submit">Save</button>
+</form>

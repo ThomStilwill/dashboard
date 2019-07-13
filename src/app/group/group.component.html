@@ -1,0 +1,3 @@
+<button (click)="editing=true" *ngIf="!editing">+</button>
+<app-linkedit *ngIf="editing" (submitted)="onSubmit($event)" (cancelled)="onCancel($event)"></app-linkedit>
+<app-items [items]="group.items"></app-items>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { GroupsService } from '../services/groups.service';
 
 @Component({
   selector: 'app-items',
@@ -9,9 +10,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 export class ItemsComponent implements OnInit {
 
   @Input() items: any;
-  @Output() changed = new EventEmitter();
 
-  constructor() { }
+  constructor(private service: GroupsService) { }
 
   ngOnInit() {
   }
@@ -25,6 +25,7 @@ export class ItemsComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
-    this.changed.emit();
+
+    this.service.save();
   }
 }
