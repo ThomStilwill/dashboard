@@ -1,23 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GroupsComponent } from './groups/groups.component';
-import { ItemsComponent } from './items/items.component';
 import { MaterialModule } from './material.module';
-import { LinkeditComponent } from './linkedit/linkedit.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GroupComponent } from './group/group.component';
+import { LinksModule } from './links/links.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GroupsComponent,
-    ItemsComponent,
-    LinkeditComponent,
-    GroupComponent
+
   ],
   imports: [
     BrowserModule,
@@ -25,6 +18,9 @@ import { GroupComponent } from './group/group.component';
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    LinksModule
   ],
   providers: [],
   bootstrap: [AppComponent]

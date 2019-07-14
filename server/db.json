@@ -15,6 +15,10 @@
         {
           "title": "Google",
           "href": "http://www.google.com"
+        },
+        {
+          "title": "Pluralsite",
+          "href": "https://www.pluralsight.com/"
         }
       ]
     },
@@ -33,6 +37,18 @@
         {
           "title": "Material Icons",
           "href": "https://google.github.io/material-design-icons/"
+        },
+        {
+          "title": "Material Design",
+          "href": "https://material.angular.io/guide/getting-started"
+        },
+        {
+          "title": "Angular 2 Standards",
+          "href": "https://github.com/johnpapa/angular-styleguide/blob/master/a2/notes.md"
+        },
+        {
+          "title": "Alligator.io",
+          "href": "https://alligator.io/angular/"
         }
       ]
     }

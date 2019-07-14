@@ -1,6 +1,4 @@
-<button mat-button (click)="editing=true" *ngIf="!editing">+</button>
 <app-linkedit *ngIf="editing" (submitted)="onSubmit($event)" (cancelled)="onCancel($event)" [item]="selecteditem"></app-linkedit>
-
 <ul class="example-list"
     cdkDropList
     [cdkDropListData]="items"
@@ -18,3 +16,7 @@
     </button>
   </li>
 </ul>
+
+<button mat-icon-button type="button" (click)="editing=true" *ngIf="!editing" title="New">
+    <i class="material-icons">add</i>
+</button>
