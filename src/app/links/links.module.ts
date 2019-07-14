@@ -4,8 +4,8 @@ import { GroupsComponent } from './groups/groups.component';
 import { ItemsComponent } from './items/items.component';
 import { LinkeditComponent } from './linkedit/linkedit.component';
 import { GroupComponent } from './group/group.component';
-
-
+import { MaterialModule } from '../material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,13 @@ import { GroupComponent } from './group/group.component';
     LinkeditComponent,
     GroupComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    GroupsComponent
   ]
 })
+
 export class LinksModule { }

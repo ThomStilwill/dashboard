@@ -5,16 +5,16 @@
       "name": "Resources",
       "items": [
         {
+          "title": "Google",
+          "href": "http://www.google.com"
+        },
+        {
           "title": "Yahoo",
           "href": "www.yahoo.com"
         },
         {
           "title": "Microsoft",
           "href": "http://www.microsoft.com"
-        },
-        {
-          "title": "Google",
-          "href": "http://www.google.com"
         },
         {
           "title": "Pluralsite",

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { GroupsService } from '../../services/groups.service';
+import { GroupsService } from '../services/groups.service';
 
 @Component({
   selector: 'app-items',
@@ -47,7 +47,7 @@ export class ItemsComponent implements OnInit {
     this.done();
   }
 
-  done () {
+  done() {
     this.editing = false;
     this.update = false;
     this.selectedindex = null;

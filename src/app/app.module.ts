@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './material.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LinksModule } from './links/links.module';
 
 @NgModule({
@@ -16,11 +14,10 @@ import { LinksModule } from './links/links.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule
+    LinksModule
   ],
   exports: [
-    LinksModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
