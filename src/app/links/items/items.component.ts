@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { GroupsService } from '../services/groups.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LinkeditComponent } from '../linkedit/linkedit.component';
+import { LinkData } from '../models/LinkData';
+
 
 @Component({
   selector: 'app-items',
@@ -9,23 +13,49 @@ import { GroupsService } from '../services/groups.service';
 })
 export class ItemsComponent implements OnInit {
 
-  @Input() items: any;
+  @Input() group: any;
+  items: any;
   selecteditem: any;
   selectedindex: any;
 
-  editing = false;
   update = false;
 
-  constructor(private service: GroupsService) { }
+  constructor(private service: GroupsService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.items = this.group.items;
+  }
+
+  openDialog(item: any): void {
+    const dialogRef = this.dialog.open(LinkeditComponent, {
+      width: '400px',
+      data: {title: item.title, href: item.href}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        this.save(result);
+      } else {
+        console.log('Cancelled');
+      }
+      this.cleanup();
+
+    });
+  }
+
+  insert() {
+    this.update = false;
+    const item = {} as LinkData;
+    this.openDialog(item);
   }
 
   edit(index, item: any) {
     this.selecteditem = item;
     this.selectedindex = index;
     this.update = true;
-    this.editing = true;
+    this.openDialog(item);
   }
 
   delete(index) {
@@ -33,22 +63,16 @@ export class ItemsComponent implements OnInit {
     this.service.save();
   }
 
-  onSubmit(data) {
+  save(data) {
     if (this.update) {
       this.items[this.selectedindex] = data;
     } else {
       this.items.push(data);
     }
     this.service.save();
-    this.done();
   }
 
-  onCancel() {
-    this.done();
-  }
-
-  done() {
-    this.editing = false;
+  cleanup() {
     this.update = false;
     this.selectedindex = null;
     this.selecteditem = null;

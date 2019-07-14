@@ -3,24 +3,24 @@ import { CommonModule } from '@angular/common';
 import { GroupsComponent } from './groups/groups.component';
 import { ItemsComponent } from './items/items.component';
 import { LinkeditComponent } from './linkedit/linkedit.component';
-import { GroupComponent } from './group/group.component';
 import { MaterialModule } from '../material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     GroupsComponent,
     ItemsComponent,
-    LinkeditComponent,
-    GroupComponent],
+    LinkeditComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   exports: [
     GroupsComponent
-  ]
+  ],
+  entryComponents: [LinkeditComponent]
 })
 
 export class LinksModule { }

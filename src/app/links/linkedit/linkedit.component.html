@@ -1,19 +1,20 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <input matInput formControlName="title" placeholder="Title">
-  </mat-form-field>
+<h1 mat-dialog-title>Edit Link</h1>
+<div mat-dialog-content>
 
   <mat-form-field appearance="fill">
-    <input matInput formControlName="href" placeholder="Href">
-  </mat-form-field>
+      <input matInput [(ngModel)]="data.title" placeholder="Title">
+    </mat-form-field>
 
-  <div class="buttonbar">
-    <button mat-icon-button type="reset" (click)="onCancel()"  title="Cancel">
-        <i class="material-icons">clear</i>
-    </button>
-    <button mat-icon-button  type="submit" title="Save">
-        <i class="material-icons">check</i>
-    </button>
-  </div>
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="data.href" placeholder="Href">
+    </mat-form-field>
 
-</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()"  title="Cancel">
+      <i class="material-icons">clear</i>
+  </button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial title="Save">
+      <i class="material-icons">check</i>
+  </button>
+</div>

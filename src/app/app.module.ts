@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LinksModule } from './links/links.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { LinksModule } from './links/links.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    LinksModule
+    LinksModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
 
   ],
-  providers: [],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
