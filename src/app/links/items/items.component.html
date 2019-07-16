@@ -1,8 +1,11 @@
 
-<h4>{{group.name}}</h4>
-<button mat-icon-button type="button" (click)="insert()" *ngIf="!editing" title="New">
+
+<div class="group-header">
+  <div>{{group.name}}</div>
+  <button mat-icon-button type="button" (click)="insert()" *ngIf="!editing" title="New">
     <i class="material-icons">add</i>
-</button>
+  </button>
+</div>
 
 <ul class="example-list"
     cdkDropList
@@ -10,8 +13,7 @@
     (cdkDropListDropped)="drop($event)">
   <li class="example-box" cdkDrag *ngFor="let item of items; let i = index">
     <div class="item-content">
-      <div class="title">{{item.title}}</div>
-      <div class="href">{{item.href}}</div>
+      <a href="{{item.href}}">{{item.title}}</a>
     </div>
     <button mat-icon-button type="button" (click)="delete(i)" title="Delete">
       <i class="material-icons">delete_outline</i>

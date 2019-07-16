@@ -1,4 +1,11 @@
 
+.group-header{
+  display:flex;
+  justify-content: space-between;
+  line-height: 40px;
+}
+
+
 .example-list {
   border: solid 1px #ccc;
   min-height: 60px;
@@ -7,13 +14,13 @@
   overflow: hidden;
   display: block;
   padding-inline-start: 0px;
+  margin:0  0 10px 0;
 }
 
 .example-box {
-  padding: 10px;
+  padding: 5px;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
-  //display: flex;
   display:  -webkit-box;
   flex-direction: row;
   align-items: center;
@@ -24,13 +31,15 @@
   font-size: 14px;
 
   .item-content {
-    width: 270px;
-    .title{
-      font-size: 1.2em;
-    }
-    .href {
+    width: 180px;
+
+    a {
       color: #555;
-      font-size: 0.8em;
+      text-decoration: none;
+      padding: 4px;
+    }
+    a:hover {
+      background-color: #ddd;
     }
   }
 

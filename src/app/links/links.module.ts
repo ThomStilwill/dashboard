@@ -5,6 +5,7 @@ import { ItemsComponent } from './items/items.component';
 import { LinkeditComponent } from './linkedit/linkedit.component';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     GroupsComponent

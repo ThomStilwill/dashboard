@@ -35,12 +35,16 @@
       "name": "Development",
       "items": [
         {
-          "title": "Scotch IO",
-          "href": "http://www.scotch.io"
-        },
-        {
           "title": "Angular",
           "href": "http://www.angulario.com"
+        },
+        {
+          "title": "Angular 2 Standards",
+          "href": "https://github.com/johnpapa/angular-styleguide/blob/master/a2/notes.md"
+        },
+        {
+          "title": "Scotch IO",
+          "href": "http://www.scotch.io"
         },
         {
           "title": "Material Icons",
@@ -49,10 +53,6 @@
         {
           "title": "Material Design",
           "href": "https://material.angular.io/guide/getting-started"
-        },
-        {
-          "title": "Angular 2 Standards",
-          "href": "https://github.com/johnpapa/angular-styleguide/blob/master/a2/notes.md"
         },
         {
           "title": "Alligator.io",

@@ -4,6 +4,7 @@ import { GroupsService } from '../services/groups.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LinkeditComponent } from '../linkedit/linkedit.component';
 import { LinkData } from '../models/LinkData';
+import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
 
 
 @Component({
@@ -30,7 +31,6 @@ export class ItemsComponent implements OnInit {
   openDialog(item: any): void {
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {title: item.title, href: item.href};
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.hasBackdrop = true;
@@ -67,8 +67,26 @@ export class ItemsComponent implements OnInit {
   }
 
   delete(index) {
-    this.items.splice(index, 1);
-    this.service.save();
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.width = '400px';
+    dialogConfig.position = {
+      top: '160px'
+    };
+    dialogConfig.data = 'Do you confirm the deletion of this data?';
+
+    const dialogRef = this.dialog.open(ConfirmComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        this.items.splice(index, 1);
+        this.service.save();
+      }
+    });
   }
 
   save(data) {
