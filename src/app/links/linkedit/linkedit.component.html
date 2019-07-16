@@ -1,20 +1,26 @@
 <h1 mat-dialog-title>Edit Link</h1>
-<div mat-dialog-content>
+<div mat-dialog-content [formGroup]="form">
 
   <mat-form-field appearance="fill">
-      <input matInput [(ngModel)]="data.title" placeholder="Title">
+      <mat-label>Description of the link</mat-label>
+      <input matInput formControlName="title" placeholder="Title">
+
+      <mat-error *ngIf="hasError('title', 'required')">Title is required</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <input matInput [(ngModel)]="data.href" placeholder="Href">
+        <mat-label>Link</mat-label>
+      <input matInput formControlName="href" placeholder="Href">
+      <mat-hint >example: http://www.mysite.com</mat-hint>
+      <mat-error *ngIf="hasError('href', 'required')">Href is required</mat-error>
     </mat-form-field>
 
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()"  title="Cancel">
+<div mat-dialog-actions [align]="end">
+  <button mat-button (click)="cancel()" mat-dialog-close title="Cancel">
       <i class="material-icons">clear</i>
   </button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial title="Save">
+  <button mat-button (click)="save()" cdkFocusInitial title="Save">
       <i class="material-icons">check</i>
   </button>
 </div>

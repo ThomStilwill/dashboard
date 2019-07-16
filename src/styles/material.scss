@@ -1,0 +1,15 @@
+.mat-form-field-invalid .mat-hint {
+  margin-top: 20px;
+}
+
+.mat-dialog-actions {
+
+
+  &[align='end'] {
+    justify-content: flex-end;
+  }
+
+  &[align='center'] {
+    justify-content: center;
+  }
+}

@@ -4,7 +4,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { ItemsComponent } from './items/items.component';
 import { LinkeditComponent } from './linkedit/linkedit.component';
 import { MaterialModule } from '../material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     GroupsComponent

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { GroupsService } from '../services/groups.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LinkeditComponent } from '../linkedit/linkedit.component';
 import { LinkData } from '../models/LinkData';
 
@@ -28,11 +28,19 @@ export class ItemsComponent implements OnInit {
   }
 
   openDialog(item: any): void {
-    const dialogRef = this.dialog.open(LinkeditComponent, {
-      width: '400px',
-      data: {title: item.title, href: item.href}
-    });
 
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {title: item.title, href: item.href};
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.width = '400px';
+    dialogConfig.position = {
+      top: '160px'
+    };
+    dialogConfig.data = item;
+
+    const dialogRef = this.dialog.open(LinkeditComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {

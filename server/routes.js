@@ -85,7 +85,7 @@ module.exports = function(app) {
   // global error handler
   app.use(errorHandler);
 
-  console.log('webpath: ' + webpath);
-  console.log('dbpath: ' + dbpath);
+//  console.log('webpath: ' + webpath);
+//  console.log('dbpath: ' + dbpath);
 
 }

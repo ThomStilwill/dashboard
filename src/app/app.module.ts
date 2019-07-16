@@ -7,6 +7,9 @@ import { LinksModule } from './links/links.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
+const defaultdialogconfig = {
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +24,10 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
     ReactiveFormsModule
   ],
   exports: [
-
   ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS,
+               useValue: defaultdialogconfig
+              }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
