@@ -6,19 +6,24 @@ import { AppComponent } from './app.component';
 import { LinksModule } from './links/links.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/dialog';
+import { AboutComponent } from './about/about.component';
+import { DemoModule } from './demo/demo.module';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    DemoModule,
     AppRoutingModule,
     LinksModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
   ],
