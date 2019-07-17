@@ -6,7 +6,6 @@ import { LinkeditComponent } from '../linkedit/linkedit.component';
 import { LinkData } from '../models/LinkData';
 import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
 
-
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
@@ -31,13 +30,7 @@ export class ItemsComponent implements OnInit {
   openDialog(item: any): void {
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.hasBackdrop = true;
     dialogConfig.width = '400px';
-    dialogConfig.position = {
-      top: '160px'
-    };
     dialogConfig.data = item;
 
     const dialogRef = this.dialog.open(LinkeditComponent, dialogConfig);
@@ -69,13 +62,6 @@ export class ItemsComponent implements OnInit {
   delete(index) {
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.hasBackdrop = true;
-    dialogConfig.width = '400px';
-    dialogConfig.position = {
-      top: '160px'
-    };
     dialogConfig.data = 'Do you confirm the deletion of this data?';
 
     const dialogRef = this.dialog.open(ConfirmComponent, dialogConfig);

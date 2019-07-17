@@ -5,10 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LinksModule } from './links/links.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-
-const defaultdialogconfig = {
-};
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,7 +23,16 @@ const defaultdialogconfig = {
   exports: [
   ],
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS,
-               useValue: defaultdialogconfig
+               useValue: {
+                ...new MatDialogConfig(),
+                disableClose: true,
+                autoFocus: true,
+                hasBackdrop: true,
+                width: '400px',
+                position: {
+                  top: '60px'
+                }
+                } as MatDialogConfig
               }],
   bootstrap: [AppComponent]
 })
