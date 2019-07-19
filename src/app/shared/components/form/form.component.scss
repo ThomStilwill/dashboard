@@ -1,0 +1,38 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  width: 60%;
+  border: 1px solid rgba(0,0,0,.03);
+  box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,.12);
+  margin: 4px;
+  padding: 20px;
+}
+
+
+
+.form-title {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  .form-title-spacer {
+    flex: 1 1 auto;
+  }
+}
+
+.form-action {
+  text-align: right;
+  .mat-button:disabled{
+    color: red;
+  }
+}

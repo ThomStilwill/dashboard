@@ -1,16 +1,21 @@
-<mat-toolbar color="primary">
+<header>
+<mat-toolbar>
   <mat-toolbar-row>
-    <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1>Dashboard</h1>
-    <span class="menu-spacer"></span>
-    <div>
-      <a [routerLink]="['home']" mat-button routerLinkActive="active-link">Home</a>
-      <a [routerLink]="['links']" mat-button routerLinkActive="active-link">Links</a>
-      <a [routerLink]="['demo']" mat-button routerLinkActive="active-link">Demo</a>
+    <h2>Dashboard</h2>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end">
+      <ul fxLayout fxLayoutGap="20px">
+          <li><button [routerLink]="['home']" mat-button routerLinkActive="active-link">Home</button></li>
+          <li><button [routerLink]="['links']" mat-button routerLinkActive="active-link">Links</button></li>
+          <li><button [routerLink]="['demo']" mat-button routerLinkActive="active-link">Demo</button></li>
+      </ul>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+</header>
 
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+</footer>

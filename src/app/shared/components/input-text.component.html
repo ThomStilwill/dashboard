@@ -4,8 +4,24 @@
   [floatLabel]="true">
   <mat-label>{{label}}</mat-label>
 
-  <input #input matInput type="text" class="form-control" (input)="valueChanged($event)" [readonly]="readonly"
-    (focus)="$event.target.select()" (blur)="onTouched()">
+  <input
+      matInput
+      placeholder="{{placeholder}}"
+      [value]="valuefield"
+      (input)="onChange($event.target.value)"
+      (keyup)="onChange($event.target.value)"
+      (focus)="$event.target.select()"
+      (blur)="onTouched()"
+      [readonly]="readonly">
   <mat-hint>{{hint}}</mat-hint>
-  <mat-error>{{label}} is required</mat-error>
+  <mat-error>
+    <validation-messages
+      controlName="{{formControlName}}"
+      [control]="control"
+      label="{{label}}"
+      [validationMessages]="validationMessages">
+    </validation-messages>
+
+
+  </mat-error>
 </mat-form-field>

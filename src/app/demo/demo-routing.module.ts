@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DemoComponent } from './demo.component';
-import { FormComponent } from './form/form.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   { path: 'demo',
     component: DemoComponent,
     children: [
-      { path: 'form', component: FormComponent },
+      { path: 'edit', component: EditComponent },
     ]
   }
 ];

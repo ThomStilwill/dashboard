@@ -4,15 +4,20 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { MaterialModule } from '../material.module';
 import { InputTextComponent } from './components/input-text.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ValidationMessagesComponent } from './components/validation-messages.component';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
     ConfirmComponent,
-    InputTextComponent
+    InputTextComponent,
+    ValidationMessagesComponent,
+    FormComponent
   ],
   exports: [
     ConfirmComponent,
-    InputTextComponent
+    InputTextComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,

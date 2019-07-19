@@ -1,0 +1,18 @@
+<div class="form-wrapper">
+  <form class="form-container" [formGroup]="formGroup" (submit)="submit(formGroup)">
+    <div class="form-title">
+      <div class="form-title-spacer">{{title}}</div>
+    </div>
+
+    <ng-content></ng-content>
+
+    <div class="form-actions">
+      <button mat-button type="reset" (click)="cancel()" title="Cancel">
+        <i class="material-icons">clear</i>
+      </button>
+      <button mat-button type="submit" [disabled]="!formGroup.valid" title="Save">
+          <i class="material-icons">check</i>
+        </button>
+    </div>
+  </form>
+</div>

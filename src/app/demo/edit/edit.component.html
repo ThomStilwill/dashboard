@@ -1,4 +1,4 @@
-<div [formGroup]="form" class="example-container">
+<edit-form [formGroup]="form" title="Demo Form" (submit)="onSubmit($event)" (cancel)="onCancel($event)">
 
   <input-text
     formControlName="name"
@@ -14,4 +14,4 @@
     <mat-error>Required</mat-error>
   </mat-form-field>
 
-</div>
+</edit-form>
