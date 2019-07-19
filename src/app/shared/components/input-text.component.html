@@ -1,0 +1,33 @@
+<mat-form-field appearance="fill" [hideRequiredMarker]="false" [floatLabel]="true">
+  <mat-label>{{label}}</mat-label>
+  <input matInput
+         placeholder="{{placeholder}}"
+         [value]="_value"
+         (input)="onChange($event.target.value)"
+         (blur)="onTouched($event)"
+         (keyup)="onChange($event.target.value)">
+  <mat-hint>{{hint}}</mat-hint>
+  <mat-error>{{label}} is required</mat-error>
+
+</mat-form-field>
+
+<!-- <div class="field">
+  <label [ngClass]="{'error': control && control.errors}">
+    <div class="labeltext">{{label}}</div>
+
+    <div class="inputblock">
+      <div class="{{type}} inputcontrol">
+        <input type="text" placeholder="{{placeholder}}" [value]="_value" (input)="onChange($event.target.value)"
+          (blur)="onTouched($event)" (keyup)="onChange($event.target.value)">
+        <control-status [control]="control"></control-status>
+      </div>
+
+      <div class="help-message">{{help}}</div>
+      <div class="validation-messages">
+        <validation-messages controlName="{{formControlName}}" [control]="control" label="{{label}}"
+          [validationMessages]="validationMessages">
+        </validation-messages>
+      </div>
+    </div>
+  </label>
+</div> -->
