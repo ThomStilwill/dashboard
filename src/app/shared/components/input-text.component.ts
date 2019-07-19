@@ -1,104 +1,134 @@
-import { Component, OnInit, OnDestroy, DoCheck, Input, ElementRef, Injector, HostBinding } from '@angular/core';
-import { AbstractControl, ControlContainer, NgControl } from '@angular/forms';
-import { AbstractValueAccessor, MakeProvider} from './abstract-value-accessor';
-import { Subject } from 'rxjs';
-import { FocusMonitor } from '@angular/cdk/a11y';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { MatAutocompleteTrigger, MatInput } from '@angular/material';
+import {
+  Component,
+  Input,
+  AfterViewInit,
+  ViewChild,
+  OnChanges,
+  SimpleChanges,
+  forwardRef,
+  Injector
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
+
 
 @Component({
   selector: 'input-text',
   templateUrl: './input-text.component.html',
-  providers: [MakeProvider(InputTextComponent)]
+  // styleUrls: ['./input-text.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputTextComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => InputTextComponent),
+      multi: true
+    }
+  ]
 })
+export class InputTextComponent implements AfterViewInit, OnChanges, ControlValueAccessor, Validator {
 
-export class InputTextComponent
-       extends AbstractValueAccessor<string>
-        implements OnInit, OnDestroy, DoCheck {
+  @Input() label: string;
+  @Input() hint: string;
 
-    @Input() label: string;
-    @Input() type = 'text';
-    @Input() placeholder: string;
-    @Input() hint: string;
-    @Input() validationMessages: object = {};
 
-    @Input()
-    get required() {
-       return this._required;
+  @Input() options: any[] = [];
+  @Input() readonly = false;
+  @Input() displayFunction: (value: any) => string = this.defaultDisplayFn;
+  @Input() filterFunction: (value: any) => any[] = this.defaultFilterFn;
+
+  @ViewChild(MatAutocompleteTrigger, {static: false}) trigger: MatAutocompleteTrigger;
+  @ViewChild(MatInput, {static: false}) matInput: MatInput;
+
+  filteredOptions: any[];
+  optionSelected = '';
+  onChange = (val: any) => {};
+  onTouched = () => {};
+
+  constructor(
+    private injector: Injector
+  ) { }
+
+  ngAfterViewInit() {
+    // this.trigger.panelClosingActions
+    //   .subscribe(
+    //     e => {
+    //       if (this.trigger.activeOption) {
+    //         const value = this.trigger.activeOption.value;
+    //         this.writeValue(value);
+    //         this.onChange(value);
+    //       }
+    //     }
+    //   );
+
+    // this is needed in order for the mat-form-field to be marked as invalid when the control is invalid
+    setTimeout(() => {
+      this.matInput.ngControl = this.injector.get(NgControl, null);
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.options) {
+      this.filterOptions(this.optionSelected);
     }
-    set required(req) {
-       this._required = coerceBooleanProperty(req);
-       this.stateChanges.next();
+  }
+
+  writeValue(obj: any): void {
+    if (obj) {
+      this.trigger.writeValue(obj);
+      this.optionSelected = obj;
+      this.filterOptions(obj);
     }
-    public _required = false;
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    this.matInput.disabled = isDisabled;
+    this.trigger.setDisabledState(isDisabled);
+  }
 
-    @Input()
-    get disabled() {
-      return this._disabled;
-    }
-    set disabled(dis) {
-      this._disabled = coerceBooleanProperty(dis);
-      this.stateChanges.next();
-    }
-    public _disabled = false;
+  validate(c: AbstractControl): { [key: string]: any; } {
+    return c;
+  }
 
-    @HostBinding('class.floating')
-    get shouldLabelFloat() {
-      return this.focused || !this.empty;
-    }
+  valueChanged(event) {
+    const value = event.target.value;
+    this.optionSelected = value;
+    this.onChange(value);
+    this.filterOptions(value);
+  }
 
-    get empty() {
-      const commentText = this.value.trim();
-      return commentText ? false : true;
-   }
+  onOptionSelected(event) {
+    const value = event.option.value;
+    this.optionSelected = value;
+    this.onChange(value);
+    this.filterOptions(value);
+  }
 
-    stateChanges = new Subject<void>();
-    ngControl: any;
-    controlType = 'input';
-    errorState = false;
-    focused: boolean;
+  filterOptions(value) {
+    this.filteredOptions = this.filterFunction(value);
+  }
 
-    debug = false;
-    control: AbstractControl;
+  private defaultFilterFn(value) {
+    let name = value;
 
-    constructor(controlContainer: ControlContainer,
-                public elRef: ElementRef,
-                public injector: Injector,
-                private fm: FocusMonitor) {
-        super(controlContainer);
-
-        fm.monitor(elRef.nativeElement, true).subscribe(origin => {
-          this.focused = !!origin;
-          this.stateChanges.next();
-        });
-    }
-
-    ngOnDestroy() {
-      this.stateChanges.complete();
-      this.fm.stopMonitoring(this.elRef.nativeElement);
+    if (value && typeof value === 'object') {
+      name = value.name;
     }
 
-    ngDoCheck(): void {
-      if (this.ngControl) {
-        this.errorState = this.ngControl.invalid && this.ngControl.touched;
-        this.stateChanges.next();
-      }
-   }
+    return this.options.filter(
+      o => o.name.toLowerCase().indexOf(name ? name.toLowerCase() : '') !== -1
+    );
+  }
 
-    ngOnInit() {
-
-      this.ngControl = this.injector.get(NgControl);
-      if (this.ngControl != null) {
-        this.ngControl.valueAccessor = this;
-      }
-
-      if (this.controlContainer) {
-            if (this.formControlName) {
-                this.control = this.controlContainer.control.get(this.formControlName);
-            } else {
-                console.warn('Missing FormControlName');
-            }
-        } else {
-            console.warn('Missing FormControlName');
-        }
-    }
+  defaultDisplayFn(value) {
+    return value ? value.name : value;
+  }
 }

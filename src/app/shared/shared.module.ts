@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { MaterialModule } from '../material.module';
 import { InputTextComponent } from './components/input-text.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { InputTextComponent } from './components/input-text.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   entryComponents: [ConfirmComponent]
 })
