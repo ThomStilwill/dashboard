@@ -53,16 +53,16 @@ export class InputTextComponent implements AfterViewInit, OnChanges, ControlValu
   ) { }
 
   ngAfterViewInit() {
-    // this.trigger.panelClosingActions
-    //   .subscribe(
-    //     e => {
-    //       if (this.trigger.activeOption) {
-    //         const value = this.trigger.activeOption.value;
-    //         this.writeValue(value);
-    //         this.onChange(value);
-    //       }
-    //     }
-    //   );
+    this.trigger.panelClosingActions
+      .subscribe(
+        e => {
+          if (this.trigger.activeOption) {
+            const value = this.trigger.activeOption.value;
+            this.writeValue(value);
+            this.onChange(value);
+          }
+        }
+      );
 
     // this is needed in order for the mat-form-field to be marked as invalid when the control is invalid
     setTimeout(() => {
