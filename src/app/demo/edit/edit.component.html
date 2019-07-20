@@ -1,4 +1,9 @@
-<edit-form [formGroup]="form" title="Demo Form" (submit)="onSubmit($event)" (cancel)="onCancel($event)">
+<edit-form
+  [formGroup]="form"
+  title="Demo Form"
+  debug="true"
+  (submit)="onSubmit($event)"
+  (cancel)="onCancel($event)">
 
   <input-text
     formControlName="name"
@@ -13,5 +18,12 @@
     <mat-hint>Please enter description.</mat-hint>
     <mat-error>Required</mat-error>
   </mat-form-field>
+
+  <input-date
+    formControlName="date"
+    label="Date"
+    hint="Enter a date"
+    placeholder="any date...">
+  </input-date>
 
 </edit-form>

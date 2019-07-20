@@ -10,3 +10,12 @@ body {
 main {
   padding: 10px;
 }
+
+a {
+  padding: 4px 8px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #ddd;
+}

@@ -14,5 +14,8 @@
           <i class="material-icons">check</i>
         </button>
     </div>
+
+    <pre *ngIf="debug">{{formGroup.value | json}}</pre>
+
   </form>
 </div>

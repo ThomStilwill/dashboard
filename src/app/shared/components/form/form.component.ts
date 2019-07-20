@@ -11,23 +11,24 @@ export class FormComponent implements OnInit {
 
   @Input() formGroup: FormGroup;
   @Input() title: string;
+  @Input() debug = false;
   @Output() submitEvent = new EventEmitter();
   @Output() cancelEvent = new EventEmitter();
 
   submitted = false;
-  debug = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  submit(data) {
+  submit() {
     this.submitted = true;
+
     if (!this.formGroup.valid) {
       return;
     }
-    this.submitEvent.emit(data);
+    this.submitEvent.emit(this.formGroup.value);
   }
 
   cancel(data) {

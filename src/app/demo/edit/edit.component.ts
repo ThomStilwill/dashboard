@@ -11,12 +11,14 @@ export class EditComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
+
     this.form = this.fb.group({
       name: ['', [Validators.required,
                   Validators.minLength(3),
                   Validators.maxLength(12)
                 ]],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      date: [new Date(), Validators.required]
     });
    }
 
@@ -28,7 +30,7 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(data) {
-    console.log(data);
+    console.log('saved: ' + JSON.stringify(this.form.value));
   }
 
 }

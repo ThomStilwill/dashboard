@@ -17,22 +17,22 @@
   padding: 20px;
 }
 
-
-
 .form-title {
   align-content: center;
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 8px 0;
+  padding: 0 0 16px 8px;
   .form-title-spacer {
     flex: 1 1 auto;
   }
 }
 
-.form-action {
-  text-align: right;
-  .mat-button:disabled{
+.form-actions {
+  display: flex;
+  justify-content: flex-end ;
+  .mat-button:disabled,
+  .mat-button[disabled] {
     color: red;
   }
 }
