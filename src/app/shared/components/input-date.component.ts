@@ -40,22 +40,14 @@ export class InputDateComponent implements OnInit, AfterViewInit, ControlValueAc
   @Input() displayFunction: (value: any) => string = this.defaultDisplayFn;
   @ViewChild(MatInput, {static: false}) matInput: MatInput;
 
-  @Input() value;
-
   valuefield: any = null;
   control: AbstractControl;
 
-  @HostListener('input', ['$event.target.value']) onChange = (_: any) => { };
-  @HostListener('blur', []) onTouched = () => { };
-
   constructor(private injector: Injector,
-              private cdr: ChangeDetectorRef,
               private controlContainer: ControlContainer  ) {
   }
 
   ngOnInit() {
-
-    this.cdr.detectChanges();
 
     if (this.controlContainer) {
         if (this.formControlName) {
@@ -78,13 +70,32 @@ export class InputDateComponent implements OnInit, AfterViewInit, ControlValueAc
     this.onChange(event.value);
   }
 
+  get value(): any {
+    return this.valuefield;
+  }
+
+  set value(v: any) {
+    if (v !== this.valuefield) {
+      this.valuefield = v;
+      this.onChange(v);
+    }
+  }
+
   writeValue(value: any) {
     this.valuefield = value;
     this.onChange(value);
   }
 
-  registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
-  registerOnTouched(fn: () => void): void { this.onTouched = fn; }
+  onChange = (val: any) => {};
+  onTouched = () => {};
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
   setDisabledState?(isDisabled: boolean): void {
     this.matInput.disabled = isDisabled;

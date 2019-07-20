@@ -10,6 +10,10 @@
       [value]="valuefield"
       [readonly]="readonly"
       [matDatepicker]="picker"
+      (input)="onChange($event.target.value)"
+      (keyup)="onChange($event.target.value)"
+      (focus)="$event.target.select()"
+      (blur)="onTouched()"
       (dateChange)="onDateChange($event)"/>
 
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

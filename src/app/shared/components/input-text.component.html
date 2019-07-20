@@ -8,11 +8,11 @@
       matInput
       placeholder="{{placeholder}}"
       [value]="valuefield"
+      [readonly]="readonly"
       (input)="onChange($event.target.value)"
       (keyup)="onChange($event.target.value)"
       (focus)="$event.target.select()"
-      (blur)="onTouched()"
-      [readonly]="readonly">
+      (blur)="onTouched()" >
   <mat-hint>{{hint}}</mat-hint>
   <mat-error>
     <validation-messages
