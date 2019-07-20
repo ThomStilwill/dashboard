@@ -12,21 +12,31 @@
     placeholder="any name...">
   </input-text>
 
-  <mat-form-field appearance="fill" >
-      <mat-label>Description</mat-label>
-    <input matInput formControlName="description" placeholder="Description"/>
-    <mat-hint>Please enter description.</mat-hint>
-    <mat-error>Required</mat-error>
-  </mat-form-field>
+  <input-text
+    formControlName="description"
+    label="Description"
+    hint="Enter the description"
+    placeholder="any description will do...">
+  </input-text>
 
   <input-date
+    class="form-field-small"
     formControlName="date"
     label="Date"
     hint="Enter a date"
     placeholder="any date...">
   </input-date>
 
-  <mat-form-field
+  <input-date
+    class="form-field-small"
+    formControlName="enddate"
+    label="EndDate"
+    hint="Enter a date"
+    placeholder="The end date.">
+  </input-date>
+
+
+  <!-- <mat-form-field
   appearance="fill"
   [hideRequiredMarker]="false"
   [floatLabel]="true">
@@ -44,8 +54,8 @@
   <mat-error>
     Required
   </mat-error>
-</mat-form-field>
+</mat-form-field> -->
 
 </edit-form>
 
-<button (click)="setdata()">set date</button>
+<!-- <button (click)="setdata()">set date</button> -->

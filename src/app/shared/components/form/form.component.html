@@ -4,7 +4,9 @@
       <div class="form-title-spacer">{{title}}</div>
     </div>
 
-    <ng-content></ng-content>
+    <div class="form-content">
+      <ng-content></ng-content>
+    </div>
 
     <div class="form-actions">
       <button mat-button type="reset" (click)="cancel()" title="Cancel">
