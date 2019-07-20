@@ -6,8 +6,6 @@ import {
   ViewChild,
   forwardRef,
   Injector,
-  HostListener,
-  ChangeDetectorRef
 } from '@angular/core';
 import {
   ControlValueAccessor,

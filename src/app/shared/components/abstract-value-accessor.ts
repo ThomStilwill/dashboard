@@ -1,28 +1,36 @@
-import { forwardRef, Input } from '@angular/core';
-import { ControlContainer, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatFormFieldControl } from '@angular/material';
+import { forwardRef, Input, Injector, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { ControlContainer, ControlValueAccessor, NG_VALUE_ACCESSOR, AbstractControl, NgControl } from '@angular/forms';
+import { MatFormFieldControl, MatInput } from '@angular/material';
 
 export abstract class AbstractValueAccessor <T>
                 implements ControlValueAccessor {
 
-    _value: T = null;
     @Input() formControlName: string;
+    @Input() label: string;
+    @Input() hint: string;
+    @Input() placeholder: string;
+    @Input() readonly = false;
+    @ViewChild(MatInput, {static: false}) matInput: MatInput;
 
-    constructor(protected controlContainer: ControlContainer) {}
+    valuefield: any = null;
+    control: AbstractControl;
+
+    constructor(protected injector: Injector,
+                protected controlContainer: ControlContainer) {}
 
     get value(): T {
-      return this._value;
+      return this.valuefield;
     }
 
     set value(v: T) {
-      if (v !== this._value) {
-        this._value = v;
+      if (v !== this.valuefield) {
+        this.valuefield = v;
         this.onChange(v);
       }
     }
 
     writeValue(value: T) {
-      this._value = value;
+      this.valuefield = value;
       this.onChange(value);
     }
 
