@@ -7,14 +7,10 @@
   <input
       matInput
       placeholder="{{placeholder}}"
-      (change)="onChange($event.target.value)"
-      (input)="onChange($event.target.value)"
-      (keyup)="onChange($event.target.value)"
-      (focus)="$event.target.select()"
-      (blur)="onTouched()"
       [value]="valuefield"
       [readonly]="readonly"
-      [matDatepicker]="picker"/>
+      [matDatepicker]="picker"
+      (dateChange)="onDateChange($event)"/>
 
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
@@ -27,7 +23,6 @@
       label="{{label}}"
       [validationMessages]="validationMessages">
     </validation-messages>
-
 
   </mat-error>
 </mat-form-field>

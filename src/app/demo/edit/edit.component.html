@@ -26,4 +26,26 @@
     placeholder="any date...">
   </input-date>
 
+  <mat-form-field
+  appearance="fill"
+  [hideRequiredMarker]="false"
+  [floatLabel]="true">
+  <mat-label>End Date</mat-label>
+  <input
+      matInput
+      formControlName="enddate"
+      placeholder="End Date"
+      [matDatepicker]="epicker"/>
+
+  <mat-datepicker-toggle matSuffix [for]="epicker"></mat-datepicker-toggle>
+  <mat-datepicker #epicker></mat-datepicker>
+
+  <mat-hint>The last date.</mat-hint>
+  <mat-error>
+    Required
+  </mat-error>
+</mat-form-field>
+
 </edit-form>
+
+<button (click)="setdata()">set date</button>

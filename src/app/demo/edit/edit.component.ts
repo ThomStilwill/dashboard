@@ -13,13 +13,19 @@ export class EditComponent implements OnInit {
   constructor(private fb: FormBuilder) {
 
     this.form = this.fb.group({
-      name: ['', [Validators.required,
+      name: ['James', [Validators.required,
                   Validators.minLength(3),
                   Validators.maxLength(12)
                 ]],
-      description: ['', Validators.required],
-      date: [new Date(), Validators.required]
+      description: ['The real captain.', Validators.required],
+      date: [new Date('8/26/1998'), Validators.required],
+      enddate: [new Date('8/26/1998'), Validators.required]
     });
+   }
+
+
+   setdata(){
+    this.form.patchValue({ date: new Date()});
    }
 
   ngOnInit() {
