@@ -1,0 +1,94 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort } from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
+import periodic from './periodic.json';
+
+export class PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+  phase: string;
+  discoverer: string;
+
+  constructor(name: string, position: number, weight: number, symbol: string, phase: string, discoverer: string) {
+    this.name = name;
+    this.position = position;
+    this.weight = weight;
+    this.symbol = symbol;
+    this.phase = phase;
+    this.discoverer = discoverer;
+  }
+}
+
+@Component({
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
+})
+export class TableComponent implements OnInit {
+
+  data: PeriodicElement[];
+  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol', 'phase', 'discoverer'];
+  dataSource: MatTableDataSource<PeriodicElement>;
+  selection = new SelectionModel<PeriodicElement>(true, []);
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  constructor() {
+    this.data = periodic.elements.map(element => {
+      return new PeriodicElement(element.name, element.number, element.atomic_mass, element.symbol, element.phase, element.discovered_by);
+    });
+    this.dataSource = new MatTableDataSource<PeriodicElement>(this.data);
+   }
+
+  ngOnInit() {
+    this.dataSource.sort = this.sort;
+
+    this.dataSource.filterPredicate =
+    (data: PeriodicElement, filter: string) => {
+      if (!filter) { return true ; }
+
+      const name = data.name.toLowerCase();
+      const weight = data.weight;
+      const discoverer = data.discoverer;
+      const phase = data.phase;
+
+      try {
+        // return data.name.toLowerCase().indexOf(filter) > -1;
+        const xfilter = filter.replace('=', '===');
+        return eval(xfilter);
+      } catch (err) {
+        console.log(err);
+        return true;
+      }
+    };
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: PeriodicElement): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  counter() {
+     return 0;
+  }
+
+}

@@ -7,7 +7,7 @@ import { LinksModule } from './links/links.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material/dialog';
 import { AboutComponent } from './about/about.component';
-import { DemoModule } from './demo/demo.module';
+import { GuideModule } from './demo/guide.module';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -19,7 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     BrowserModule,
     HttpClientModule,
-    DemoModule,
+    GuideModule,
     AppRoutingModule,
     LinksModule,
     FormsModule,

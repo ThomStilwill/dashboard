@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DemoComponent } from './demo.component';
+import { GuideComponent } from './guide.component';
 import { EditComponent } from './edit/edit.component';
+import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
-  { path: 'demo',
-    component: DemoComponent,
+  { path: 'guide',
+    component: GuideComponent,
     children: [
       { path: 'edit', component: EditComponent },
+      { path: 'table', component: TableComponent },
     ]
   }
 ];
@@ -16,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DemoRoutingModule { }
+export class GuideRoutingModule { }

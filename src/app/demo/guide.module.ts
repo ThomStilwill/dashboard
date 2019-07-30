@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoComponent } from './demo.component';
+import { GuideComponent } from './guide.component';
 import { EditComponent } from './edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DemoRoutingModule } from './demo-routing.module';
+import { GuideRoutingModule } from './guide-routing.module';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
-    DemoComponent,
-    EditComponent
+    GuideComponent,
+    EditComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    DemoRoutingModule,
+    GuideRoutingModule,
     SharedModule.forRoot()
   ]
 })
-export class DemoModule { }
+export class GuideModule { }
