@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import periodic from './periodic.json';
+import { ExpressionService } from '../services/expression.service.js';
 
 export class PeriodicElement {
   name: string;
@@ -34,7 +35,7 @@ export class TableComponent implements OnInit {
   selection = new SelectionModel<PeriodicElement>(true, []);
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() {
+  constructor(private expressionService: ExpressionService) {
     this.data = periodic.elements.map(element => {
       return new PeriodicElement(element.name, element.number, element.atomic_mass, element.symbol, element.phase, element.discovered_by);
     });
@@ -43,20 +44,11 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
-
-    this.dataSource.filterPredicate =
-    (data: PeriodicElement, filter: string) => {
+    this.dataSource.filterPredicate = (data: PeriodicElement, filter: string) => {
       if (!filter) { return true ; }
-
-      const name = data.name.toLowerCase();
-      const weight = data.weight;
-      const discoverer = data.discoverer;
-      const phase = data.phase;
-
       try {
-        // return data.name.toLowerCase().indexOf(filter) > -1;
-        const xfilter = filter.replace('=', '===');
-        return eval(xfilter);
+        const evaluator = this.expressionService.parse(filter);
+        return evaluator.compute(data);
       } catch (err) {
         console.log(err);
         return true;
@@ -65,7 +57,7 @@ export class TableComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim();
   }
 
   isAllSelected() {
