@@ -73,7 +73,7 @@ class BinaryNode extends ExpressionNode {
           throw new Error('invalid node passed');
       }
       super();
-      this.op = op;
+      this.op = op.toLowerCase();
       this.left = l;
       this.right = r;
   }
@@ -82,7 +82,7 @@ class BinaryNode extends ExpressionNode {
       const l: any = this.left.compute(context);
       const r: any = this.right.compute(context);
 
-      switch (this.op) {
+      switch (this.op.toLowerCase()) {
           // logic operators
           case 'and': return l && r;
           case 'or': return l || r;
