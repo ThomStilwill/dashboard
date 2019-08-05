@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationMessagesComponent } from './components/validation-messages.component';
 import { FormComponent } from './components/form/form.component';
 import { InputDateComponent } from './components/input-date.component';
+import { InputSelectComponent } from './components/input-select.component';
 
 @NgModule({
   declarations: [
     ConfirmComponent,
     InputTextComponent,
     InputDateComponent,
+    InputSelectComponent,
     ValidationMessagesComponent,
     FormComponent
   ],
@@ -20,6 +22,7 @@ import { InputDateComponent } from './components/input-date.component';
     ConfirmComponent,
     InputTextComponent,
     InputDateComponent,
+    InputSelectComponent,
     FormComponent
   ],
   imports: [

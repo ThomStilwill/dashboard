@@ -10,6 +10,12 @@ export class EditComponent implements OnInit {
 
   form: FormGroup;
 
+  makes = {
+    ford: 'Ford',
+    chevy: 'Chevrolet',
+    dodge: 'Dodge'
+    };
+
   constructor(private fb: FormBuilder) {
 
     this.form = this.fb.group({
@@ -19,13 +25,9 @@ export class EditComponent implements OnInit {
                 ]],
       description: ['The real captain.', Validators.required],
       date: [new Date('8/26/1998'), Validators.required],
-      enddate: [new Date('8/26/1998'), Validators.required]
+      enddate: [new Date('8/26/1998'), Validators.required],
+      make: ['', Validators.required],
     });
-   }
-
-
-   setdata(){
-    this.form.patchValue({ date: new Date()});
    }
 
   ngOnInit() {

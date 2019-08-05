@@ -1,0 +1,28 @@
+<mat-form-field
+  appearance="fill"
+  [hideRequiredMarker]="false"
+  [floatLabel]="true">
+  <mat-label>{{label}}</mat-label>
+
+  <mat-select
+      matSelect
+      [value]="valuefield"
+      (change)="onChange($event.target.value)"
+      (keyup)="onChange($event.target.value)"
+      (blur)="onTouched()" >
+      <mat-option *ngFor="let key of keys" [value]="key">
+        {{items[key]}}
+      </mat-option>
+    </mat-select>
+
+  <mat-hint>{{hint}}</mat-hint>
+
+  <mat-error>
+    <validation-messages
+      controlName="{{formControlName}}"
+      [control]="control"
+      label="{{label}}"
+      [validationMessages]="validationMessages">
+    </validation-messages>
+  </mat-error>
+</mat-form-field>
