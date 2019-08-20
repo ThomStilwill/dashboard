@@ -16,6 +16,12 @@ export class EditComponent implements OnInit {
     dodge: 'Dodge'
     };
 
+  types = {
+    mc : 'Motorcycle',
+    car: 'Automobile',
+    truck: 'Truck'
+  };
+
   constructor(private fb: FormBuilder) {
 
     this.form = this.fb.group({
@@ -27,6 +33,8 @@ export class EditComponent implements OnInit {
       date: [new Date('8/26/1998'), Validators.required],
       enddate: [new Date('8/26/1998'), Validators.required],
       make: ['', Validators.required],
+      isCommercial: [false],
+      type: ['']
     });
    }
 

@@ -23,3 +23,13 @@
   background: rgb(17,72,138);
   color: #fff;
 }
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+mat-radio-button {
+  margin: 5px;
+}

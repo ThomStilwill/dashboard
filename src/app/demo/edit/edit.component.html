@@ -44,7 +44,16 @@
     placeholder="The end date.">
   </input-select>
 
+  <input-checkbox
+    formControlName="isCommercial"
+    label="Commercial Vehicle">
+  </input-checkbox>
 
+  <input-radio
+    formControlName="type"
+    [items]="types"
+    label="Vehicle Type">
+  </input-radio>
 
 </edit-form>
 

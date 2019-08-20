@@ -19,11 +19,12 @@ export class InputSelectComponent extends AbstractSelectAccessor<string>
                                 implements OnInit, AfterViewInit {
 
   @Input() items;
+  keys: string[];
   @Input() validationMessages: object = {};
   @Input() displayFunction: (value: any) => string = this.defaultDisplayFn;
   @ViewChild(MatSelect, {static: false}) matSelect: MatSelect;
 
-  keys: string[];
+
 
   ngOnInit() {
     if (this.controlContainer) {

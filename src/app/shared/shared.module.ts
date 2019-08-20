@@ -8,6 +8,8 @@ import { ValidationMessagesComponent } from './components/validation-messages.co
 import { FormComponent } from './components/form/form.component';
 import { InputDateComponent } from './components/input-date.component';
 import { InputSelectComponent } from './components/input-select.component';
+import { InputCheckboxComponent } from './components/input-checkbox.component';
+import { InputRadioComponent } from './components/input-radio.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { InputSelectComponent } from './components/input-select.component';
     InputTextComponent,
     InputDateComponent,
     InputSelectComponent,
+    InputCheckboxComponent,
+    InputRadioComponent,
     ValidationMessagesComponent,
     FormComponent
   ],
@@ -23,6 +27,8 @@ import { InputSelectComponent } from './components/input-select.component';
     InputTextComponent,
     InputDateComponent,
     InputSelectComponent,
+    InputCheckboxComponent,
+    InputRadioComponent,
     FormComponent
   ],
   imports: [
