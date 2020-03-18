@@ -2,14 +2,19 @@
   <form class="form-container" [formGroup]="formGroup" (submit)="submit(formGroup)">
     <div class="form-title">
       <div class="form-title-spacer">{{title}}</div>
+      {{readonly?"Read":"Edit"}}
+
+      <button mat-button type="button"  title="Readonly" (click)="setState()">
+        <i class="material-icons">edit</i>
+      </button>
     </div>
 
     <div class="form-content">
       <ng-content></ng-content>
     </div>
 
-    <div class="form-actions">
-      <button mat-button type="reset" (click)="cancel()" title="Cancel">
+    <div class="form-actions" *ngIf="!readonly">
+      <button mat-button type="reset" (click)="cancel()" title="Cancel" >
         <i class="material-icons">clear</i>
       </button>
       <button mat-button type="submit" [disabled]="!formGroup.valid" title="Save">

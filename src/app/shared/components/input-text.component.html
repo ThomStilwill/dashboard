@@ -1,7 +1,8 @@
 <mat-form-field
   appearance="fill"
   [hideRequiredMarker]="false"
-  [floatLabel]="true">
+  [floatLabel]="true"
+  [class.field-readonly]="readonly">
   <mat-label>{{label}}</mat-label>
 
   <input
@@ -21,7 +22,6 @@
       label="{{label}}"
       [validationMessages]="validationMessages">
     </validation-messages>
-
 
   </mat-error>
 </mat-form-field>

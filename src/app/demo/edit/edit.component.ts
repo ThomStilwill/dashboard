@@ -34,7 +34,8 @@ export class EditComponent implements OnInit {
       enddate: [new Date('8/26/1998'), Validators.required],
       make: ['', Validators.required],
       isCommercial: [false],
-      type: ['']
+      type: [''],
+      isReadOnly: [false]
     });
    }
 

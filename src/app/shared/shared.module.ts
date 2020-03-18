@@ -10,6 +10,7 @@ import { InputDateComponent } from './components/input-date.component';
 import { InputSelectComponent } from './components/input-select.component';
 import { InputCheckboxComponent } from './components/input-checkbox.component';
 import { InputRadioComponent } from './components/input-radio.component';
+import { FormService } from './services/form-service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { InputRadioComponent } from './components/input-radio.component';
     MaterialModule,
     ReactiveFormsModule
   ],
-  entryComponents: [ConfirmComponent]
+  entryComponents: [ConfirmComponent],
+  providers: [FormService]
 })
 export class SharedModule {
 
