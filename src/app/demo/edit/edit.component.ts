@@ -25,25 +25,43 @@ export class EditComponent implements OnInit {
   constructor(private fb: FormBuilder) {
 
     this.form = this.fb.group({
-      name: ['James', [Validators.required,
+      name: ['', [Validators.required,
                   Validators.minLength(3),
                   Validators.maxLength(12)
                 ]],
-      description: ['The real captain.', Validators.required],
-      date: [new Date('8/26/1998'), Validators.required],
-      enddate: [new Date('8/26/1998'), Validators.required],
+      description: ['', Validators.required],
+      date: [null, Validators.required],
+      enddate: [null, Validators.required],
       make: ['', Validators.required],
       isCommercial: [false],
       type: [''],
       isReadOnly: [false]
     });
+
+    this.initModel();
    }
 
   ngOnInit() {
   }
 
-  onCancel(data) {
-    console.log('cancelled');
+  initModel() {
+    this.form.setValue(
+      {
+        name: 'James T Kirk',
+        description: 'The real captain.',
+        date: new Date('8/26/1998'),
+        enddate: new Date('2/15/2017'),
+        make: '',
+        isCommercial: false,
+        type: '',
+        isReadOnly: true
+      }
+    );
+  }
+
+  onReset(data) {
+    this.initModel();
+    console.log('reset: ' + JSON.stringify(this.form.value));
   }
 
   onSubmit(data) {

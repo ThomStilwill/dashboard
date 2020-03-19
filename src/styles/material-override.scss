@@ -16,12 +16,14 @@
 .mat-form-field {
   width: 100%;
   margin-bottom: 1em;
-
 }
 
 .field-readonly {
   .mat-form-field-flex {
     background-color: white!important;
+  }
+  .mat-select-disabled .mat-select-value  {
+    color: black;
   }
 }
 
@@ -39,7 +41,6 @@ mat-radio-group {
 mat-radio-button {
   margin: 5px;
 }
-
 
 input-text[ng-reflect-readonly=true]{
   .mat-form-field-flex {

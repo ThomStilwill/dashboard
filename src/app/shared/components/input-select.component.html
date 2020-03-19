@@ -1,14 +1,18 @@
 <mat-form-field
   appearance="fill"
   [hideRequiredMarker]="false"
-  [floatLabel]="true">
+  [floatLabel]="true"
+  [class.field-readonly]="readonly">
+
   <mat-label>{{label}}</mat-label>
 
   <mat-select
       matSelect
       [value]="valuefield"
       (selectionChange)="onChange($event.value)"
-      (blur)="onTouched()" >
+      (blur)="onTouched()"
+      [disabled]="readonly"
+      >
       <mat-option *ngFor="let key of keys" [value]="key">
         {{items[key]}}
       </mat-option>

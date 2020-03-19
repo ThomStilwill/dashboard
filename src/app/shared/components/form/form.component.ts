@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormService } from '../../services/form-service';
 
@@ -18,15 +18,14 @@ export class FormComponent implements OnInit {
   @Input() title: string;
   @Input() debug = false;
   @Input() readonly = false;
-  @Output() submitEvent = new EventEmitter();
-  @Output() cancelEvent = new EventEmitter();
+  @Output() submitForm = new EventEmitter();
+  @Output() resetForm = new EventEmitter();
 
   submitted = false;
 
   constructor(private formService: FormService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   setState() {
     this.readonly = !this.readonly;
@@ -39,10 +38,10 @@ export class FormComponent implements OnInit {
     if (!this.formGroup.valid) {
       return;
     }
-    this.submitEvent.emit(this.formGroup.value);
+    this.submitForm.emit(this.formGroup.value);
   }
 
-  cancel(data) {
-    this.cancelEvent.emit(data);
+  reset() {
+    this.resetForm.emit(this.formGroup.value);
   }
 }

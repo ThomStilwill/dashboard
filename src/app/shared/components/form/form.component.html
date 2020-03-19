@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <form class="form-container" [formGroup]="formGroup" (submit)="submit(formGroup)">
+  <form class="form-container" [formGroup]="formGroup">
     <div class="form-title">
       <div class="form-title-spacer">{{title}}</div>
       {{readonly?"Read":"Edit"}}
@@ -14,15 +14,14 @@
     </div>
 
     <div class="form-actions" *ngIf="!readonly">
-      <button mat-button type="reset" (click)="cancel()" title="Cancel" >
+      <button mat-button type="button" title="Cancel" (click)="reset()">
         <i class="material-icons">clear</i>
       </button>
-      <button mat-button type="submit" [disabled]="!formGroup.valid" title="Save">
+      <button mat-button type="button" [disabled]="!formGroup.valid" title="Save"  (click)="submit()">
           <i class="material-icons">check</i>
         </button>
     </div>
 
     <pre *ngIf="debug">{{formGroup.value | json}}</pre>
-
   </form>
 </div>

@@ -2,15 +2,14 @@
   [formGroup]="form"
   title="Demo Form"
   debug="true"
-  (submit)="onSubmit($event)"
-  (cancel)="onCancel($event)" >
+  (submitForm)="onSubmit($event)"
+  (resetForm)="onReset($event)" >
 
   <input-text
     formControlName="name"
     label="Name"
     hint="Enter the name"
-    placeholder="any name..."
-    >
+    placeholder="any name...">
   </input-text>
 
   <input-text
@@ -40,9 +39,8 @@
     class="form-field-small"
     formControlName="make"
     [items]="makes"
-    label="Pick one"
-    hint="pick any one"
-    placeholder="The end date.">
+    label="Make"
+    hint="Select a make.">
   </input-select>
 
   <input-checkbox

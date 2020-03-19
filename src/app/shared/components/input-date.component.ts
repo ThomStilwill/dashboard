@@ -6,6 +6,7 @@ import {
   ViewChild,
   forwardRef,
   Injector,
+  OnDestroy,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -15,6 +16,8 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { MatInput } from '@angular/material';
+import { FormService } from '../services/form-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'input-date',
@@ -27,8 +30,8 @@ import { MatInput } from '@angular/material';
     }
   ]
 })
-export class InputDateComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-
+export class InputDateComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+  private subscriptions = new Subscription();
   @Input() formControlName: string;
   @Input() validationMessages: object = {};
   @Input() label: string;
@@ -42,19 +45,20 @@ export class InputDateComponent implements OnInit, AfterViewInit, ControlValueAc
   control: AbstractControl;
 
   constructor(private injector: Injector,
-              private controlContainer: ControlContainer  ) {
+              private controlContainer: ControlContainer,
+              private formService: FormService ) {
   }
 
   ngOnInit() {
 
-    if (this.controlContainer) {
-        if (this.formControlName) {
-            this.control = this.controlContainer.control.get(this.formControlName);
-        } else {
-            console.warn('Missing FormControlName');
-        }
+    if (this.controlContainer && this.formControlName) {
+      this.control = this.controlContainer.control.get(this.formControlName);
+      this.subscriptions.add(this.formService.state$.subscribe(data => {
+      console.log(data);
+      this.readonly = data === 'Read';
+      }));
     } else {
-        console.warn('Missing FormControlName');
+      console.warn('Missing FormControlName');
     }
   }
 
@@ -101,5 +105,9 @@ export class InputDateComponent implements OnInit, AfterViewInit, ControlValueAc
 
   defaultDisplayFn(value) {
     return value ? value.name : value;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
