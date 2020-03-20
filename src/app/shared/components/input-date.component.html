@@ -17,8 +17,8 @@
       (blur)="onTouched()"
       (dateChange)="onDateChange($event)"/>
 
-  <mat-datepicker-toggle *ngIf="!readonly" matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker *ngIf="!readonly"></mat-datepicker>
+  <mat-datepicker-toggle [hidden]="readonly" matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker [hidden]="readonly"></mat-datepicker>
 
   <mat-hint>{{hint}}</mat-hint>
   <mat-error>
