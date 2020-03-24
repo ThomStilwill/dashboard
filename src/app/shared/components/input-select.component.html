@@ -7,14 +7,13 @@
   <mat-label>{{label}}</mat-label>
 
   <mat-select
-      matSelect
-      [value]="valuefield"
-      (selectionChange)="onChange($event.value)"
+      (selectionChange)="selectionChange($event)"
+      [value]="value"
       (blur)="onTouched()"
-      [disabled]="readonly"
-      >
-      <mat-option *ngFor="let key of keys" [value]="key">
-        {{items[key]}}
+      [disabled]="readonly">
+      <mat-option [value]=""></mat-option>
+      <mat-option *ngFor="let item of items" [value]="item.value">
+        {{item.viewValue}}
       </mat-option>
     </mat-select>
 

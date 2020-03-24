@@ -11,6 +11,8 @@ import { InputSelectComponent } from './components/input-select.component';
 import { InputCheckboxComponent } from './components/input-checkbox.component';
 import { InputRadioComponent } from './components/input-radio.component';
 import { FormService } from './services/form-service';
+import { SelectItem } from './components/select-item';
+
 
 @NgModule({
   declarations: [

@@ -1,20 +1,5 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  forwardRef,
-  Injector,
-  OnDestroy,
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-  ControlContainer,
-  AbstractControl
-} from '@angular/forms';
+import { Component,  Input,  OnInit,  AfterViewInit, ViewChild, Injector, OnDestroy, forwardRef} from '@angular/core';
+import { ControlValueAccessor,  NG_VALUE_ACCESSOR, NgControl, ControlContainer, AbstractControl} from '@angular/forms';
 import { MatInput } from '@angular/material';
 import { FormService } from '../services/form-service';
 import { Subscription } from 'rxjs';
@@ -30,7 +15,8 @@ import { Subscription } from 'rxjs';
     }
   ]
 })
-export class InputDateComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+
+export class InputDateComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterViewInit  {
   private subscriptions = new Subscription();
   @Input() formControlName: string;
   @Input() validationMessages: object = {};
@@ -38,10 +24,9 @@ export class InputDateComponent implements OnInit, OnDestroy, AfterViewInit, Con
   @Input() hint: string;
   @Input() placeholder: string;
   @Input() readonly = false;
-  @Input() displayFunction: (value: any) => string = this.defaultDisplayFn;
   @ViewChild(MatInput, {static: false}) matInput: MatInput;
 
-  valuefield: any = null;
+  fieldvalue: any = null;
   control: AbstractControl;
 
   constructor(private injector: Injector,
@@ -54,9 +39,9 @@ export class InputDateComponent implements OnInit, OnDestroy, AfterViewInit, Con
     if (this.controlContainer && this.formControlName) {
       this.control = this.controlContainer.control.get(this.formControlName);
       this.subscriptions.add(this.formService.state$.subscribe(data => {
-      console.log(data);
-      this.readonly = data === 'Read';
-      }));
+        console.log(data);
+        this.readonly = data === 'Read';
+        }));
     } else {
       console.warn('Missing FormControlName');
     }
@@ -72,42 +57,35 @@ export class InputDateComponent implements OnInit, OnDestroy, AfterViewInit, Con
     this.onChange(event.value);
   }
 
-  get value(): any {
-    return this.valuefield;
-  }
-
-  set value(v: any) {
-    if (v !== this.valuefield) {
-      this.valuefield = v;
-      this.onChange(v);
-    }
-  }
-
-  writeValue(value: any) {
-    this.valuefield = value;
-    this.onChange(value);
-  }
-
-  onChange = (val: any) => {};
-  onTouched = () => {};
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
   setDisabledState?(isDisabled: boolean): void {
     this.matInput.disabled = isDisabled;
-  }
-
-  defaultDisplayFn(value) {
-    return value ? value.name : value;
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+
+  get value(): any {
+    // console.log('date get:' + this.fieldvalue);
+    return this.fieldvalue;
+  }
+
+  set value(value: any) {
+    if (value !== this.fieldvalue) {
+      this.fieldvalue = value;
+      this.onChange(value);
+      // console.log('date writeValue:' + this.value);
+    }
+  }
+
+  writeValue(value: any) {
+    this.fieldvalue = value;
+    this.onChange(value);
+    // console.log('date writeValue:' + this.value);
+  }
+
+  onChange = (val: any) => {};
+  onTouched = () => {};
+  registerOnChange(fn: any): void { this.onChange = fn; }
+  registerOnTouched(fn: any): void { this.onTouched = fn; }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SelectItem } from '../../shared/components/select-item';
+
 
 @Component({
   selector: 'app-edit',
@@ -10,11 +12,11 @@ export class EditComponent implements OnInit {
 
   form: FormGroup;
 
-  makes = {
-    ford: 'Ford',
-    chevy: 'Chevrolet',
-    dodge: 'Dodge'
-    };
+  makes: SelectItem[] = [
+    {value: 'ford', viewValue: 'Ford'},
+    {value: 'chevy', viewValue: 'Chevrolet'},
+    {value: 'dodge', viewValue: 'Dodge'},
+  ];
 
   types = {
     mc : 'Motorcycle',
@@ -60,7 +62,9 @@ export class EditComponent implements OnInit {
   }
 
   onReset(data) {
+    this.form.reset();
     this.initModel();
+
     console.log('reset: ' + JSON.stringify(this.form.value));
   }
 

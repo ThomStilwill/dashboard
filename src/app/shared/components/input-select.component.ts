@@ -1,67 +1,96 @@
+import { Component, Input, OnInit, AfterViewInit, ViewChild, OnDestroy, Injector, ElementRef, forwardRef, Renderer2} from '@angular/core';
+import { NgControl, ControlContainer, AbstractControl, ControlValueAccessor , NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatSelect } from '@angular/material';
-import {
-  Component,
-  Input,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  OnDestroy,
-  Injector
-} from '@angular/core';
-import { NgControl, ControlContainer } from '@angular/forms';
-import { AbstractSelectAccessor, MakeProvider } from './abstract-select-accessor';
-import { Subscription } from 'rxjs';
 import { FormService } from '../services/form-service';
+import { Subscription, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'input-select',
   templateUrl: './input-select.component.html',
-  providers: MakeProvider(InputSelectComponent)
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputSelectComponent),
+      multi: true
+    }
+  ]
 })
 
-export class InputSelectComponent extends AbstractSelectAccessor<string>
-                                implements OnInit, OnDestroy, AfterViewInit {
+export class InputSelectComponent implements ControlValueAccessor, OnInit, OnDestroy {
 
   private subscriptions = new Subscription();
-  @Input() items;
-  keys: string[];
+  @Input() formControlName: string;
   @Input() validationMessages: object = {};
-  @Input() displayFunction: (value: any) => string = this.defaultDisplayFn;
-  @ViewChild(MatSelect, {static: false}) matSelect: MatSelect;
+  @Input() label: string;
+  @Input() hint: string;
+  @Input() placeholder: string;
+  @Input() readonly = false;
+  @Input() items;
 
-  constructor(private formService: FormService, injector: Injector, controlContainer: ControlContainer ) {
-    super(injector, controlContainer);
+  selectedOption: string;
+  control: AbstractControl;
+
+  constructor(private injector: Injector,
+              private controlContainer: ControlContainer,
+              private formService: FormService
+              ) {
   }
 
   ngOnInit() {
     if (this.controlContainer && this.formControlName) {
-            this.control = this.controlContainer.control.get(this.formControlName);
-            this.subscriptions.add(this.formService.state$.subscribe(data => {
-              console.log(data);
-              this.readonly = data === 'Read';
-            }));
-        } else {
-            console.warn('Missing FormControlName');
-        }
-
-    this.keys = Object.keys(this.items);
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.matSelect.ngControl = this.injector.get(NgControl, null);
-    });
-  }
-
-  setDisabledState?(isDisabled: boolean): void {
-    this.matSelect.disabled = isDisabled;
-  }
-
-  defaultDisplayFn(value) {
-    return value ? value.name : value;
+      this.control = this.controlContainer.control.get(this.formControlName);
+      this.subscriptions.add(this.formService.state$.subscribe(data => {
+        console.log(data);
+        this.readonly = data === 'Read';
+      }));
+    } else {
+      console.warn('Missing FormControlName');
+    }
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+
+  selectionChange(event)
+  {
+    this.value = event.value;
+    this.onChange(this.value);
+    // debugger;
+    // this.changeEvent.emit();
+  }
+
+  get value() {
+    return this.selectedOption;
+  }
+
+  set value(v) {
+    if (v != undefined && v != null && v !== this.selectedOption) {
+      this.selectedOption = v;
+    }
+  }
+
+  // get value(): any {
+  //   console.log('text get: ' + this.fieldvalue);
+  //   return this.fieldvalue;
+  // }
+
+  // set value(value: any) {
+  //   if (value !== this.fieldvalue) {
+  //     this.fieldvalue = value;
+  //     console.log('text set: ' + this.fieldvalue);
+  //   }
+  // }
+
+  onChange = (val: any) => {};
+  onTouched = () => {};
+  registerOnChange(fn: any): void { this.onChange = fn; }
+  registerOnTouched(fn: any): void { this.onTouched = fn; }
+
+  writeValue(value: any) {
+    this.selectedOption = value;
+    console.log('text write: ' + this.value);
+  }
+
 }
