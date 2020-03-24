@@ -1,9 +1,8 @@
-import { Component, Input, OnInit, AfterViewInit, ViewChild, OnDestroy, Injector, ElementRef, forwardRef, Renderer2} from '@angular/core';
-import { NgControl, ControlContainer, AbstractControl, ControlValueAccessor , NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatSelect } from '@angular/material';
+import { Component, Input, OnInit, OnDestroy, Injector, forwardRef, ViewChild, AfterViewInit} from '@angular/core';
+import { ControlContainer, AbstractControl, ControlValueAccessor , NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { FormService } from '../services/form-service';
-import { Subscription, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { MatSelect } from '@angular/material';
 
 @Component({
   selector: 'input-select',
@@ -17,7 +16,7 @@ import { takeUntil } from 'rxjs/operators';
   ]
 })
 
-export class InputSelectComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class InputSelectComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterViewInit {
 
   private subscriptions = new Subscription();
   @Input() formControlName: string;
@@ -27,6 +26,7 @@ export class InputSelectComponent implements ControlValueAccessor, OnInit, OnDes
   @Input() placeholder: string;
   @Input() readonly = false;
   @Input() items;
+  @ViewChild(MatSelect, {static: false}) matInput: MatSelect;
 
   selectedOption: string;
   control: AbstractControl;
@@ -49,39 +49,33 @@ export class InputSelectComponent implements ControlValueAccessor, OnInit, OnDes
     }
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.matInput.ngControl = this.injector.get(NgControl, null);
+    });
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
-  selectionChange(event)
-  {
+  selectionChange(event) {
     this.value = event.value;
     this.onChange(this.value);
-    // debugger;
-    // this.changeEvent.emit();
   }
 
   get value() {
+    console.log('select get: ' + this.selectedOption);
     return this.selectedOption;
   }
 
   set value(v) {
+    console.log('select set: ' + v);
     if (v != undefined && v != null && v !== this.selectedOption) {
       this.selectedOption = v;
     }
+
   }
-
-  // get value(): any {
-  //   console.log('text get: ' + this.fieldvalue);
-  //   return this.fieldvalue;
-  // }
-
-  // set value(value: any) {
-  //   if (value !== this.fieldvalue) {
-  //     this.fieldvalue = value;
-  //     console.log('text set: ' + this.fieldvalue);
-  //   }
-  // }
 
   onChange = (val: any) => {};
   onTouched = () => {};
@@ -90,7 +84,6 @@ export class InputSelectComponent implements ControlValueAccessor, OnInit, OnDes
 
   writeValue(value: any) {
     this.selectedOption = value;
-    console.log('text write: ' + this.value);
   }
 
 }

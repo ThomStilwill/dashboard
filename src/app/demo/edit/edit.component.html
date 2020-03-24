@@ -22,7 +22,7 @@
   <input-date
     class="form-field-small"
     formControlName="date"
-    label="Date"
+    label="Start Date"
     hint="Enter a date"
     placeholder="any date...">
   </input-date>
@@ -30,7 +30,7 @@
   <input-date
     class="form-field-small"
     formControlName="enddate"
-    label="EndDate"
+    label="End Date"
     hint="Enter a date"
     placeholder="The end date.">
   </input-date>
@@ -40,28 +40,9 @@
     formControlName="make"
     [items]="makes"
     label="Make"
-    hint="Select a make.">
+    hint="Select a make."
+    placeholder="-select-">
   </input-select>
-
-  <!-- <mat-form-field
-    appearance="fill"
-    [hideRequiredMarker]="false"
-    [floatLabel]="true"
-    [class.field-readonly]="readonly">
-
-    <mat-label>Test Make</mat-label>
-
-    <mat-select formControlName="make">
-      <mat-option [value]=""></mat-option>
-      <mat-option *ngFor="let make of makes" [value]="make.value">
-        {{make.viewValue}}
-      </mat-option>
-    </mat-select>
-
-    <mat-hint>test make</mat-hint>
-
-  </mat-form-field> -->
-
 
   <input-checkbox
     formControlName="isCommercial"
@@ -75,5 +56,3 @@
   </input-radio>
 
 </edit-form>
-
-<!-- <button (click)="setdata()">set date</button> -->

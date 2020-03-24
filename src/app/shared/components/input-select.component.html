@@ -11,7 +11,7 @@
       [value]="value"
       (blur)="onTouched()"
       [disabled]="readonly">
-      <mat-option [value]=""></mat-option>
+      <mat-option> {{placeholder}}</mat-option>
       <mat-option *ngFor="let item of items" [value]="item.value">
         {{item.viewValue}}
       </mat-option>
