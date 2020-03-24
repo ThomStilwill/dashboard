@@ -64,6 +64,8 @@ export class EditComponent implements OnInit {
   onReset(data) {
     this.form.reset();
     this.initModel();
+    this.form.markAsPristine();
+    this.form.markAsUntouched();
 
     console.log('reset: ' + JSON.stringify(this.form.value));
   }

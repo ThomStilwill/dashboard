@@ -1,0 +1,27 @@
+
+pre {
+  font-size: 10px;
+}
+
+table {
+  width: 100%;
+  font-size: 10px;
+
+  th,td {
+    padding: 3px 3px;
+  }
+
+  thead {
+    text-align: left;
+
+  }
+
+  tbody {
+    tr:nth-child(odd) {
+      background-color: lightgray;
+    }
+  }
+
+}
+
+

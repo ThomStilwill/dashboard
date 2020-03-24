@@ -12,6 +12,7 @@ import { InputCheckboxComponent } from './components/input-checkbox.component';
 import { InputRadioComponent } from './components/input-radio.component';
 import { FormService } from './services/form-service';
 import { SelectItem } from './components/select-item';
+import { FormstateComponent } from './formstate/formstate.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SelectItem } from './components/select-item';
     InputCheckboxComponent,
     InputRadioComponent,
     ValidationMessagesComponent,
-    FormComponent
+    FormComponent,
+    FormstateComponent
   ],
   exports: [
     ConfirmComponent,

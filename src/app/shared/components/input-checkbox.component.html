@@ -1,1 +1,5 @@
-<mat-checkbox [formControlName]="formControlName">{{label}}</mat-checkbox>
+<mat-checkbox
+  [formControlName]="formControlName"
+  [disabled]="readonly">
+  {{label}}
+</mat-checkbox>

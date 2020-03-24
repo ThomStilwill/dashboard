@@ -65,12 +65,12 @@ export class InputSelectComponent implements ControlValueAccessor, OnInit, OnDes
   }
 
   get value() {
-    console.log('select get: ' + this.selectedOption);
+    // console.log('select get: ' + this.selectedOption);
     return this.selectedOption;
   }
 
   set value(v) {
-    console.log('select set: ' + v);
+    // console.log('select set: ' + v);
     if (v != undefined && v != null && v !== this.selectedOption) {
       this.selectedOption = v;
     }

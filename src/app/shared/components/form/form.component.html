@@ -22,8 +22,7 @@
         </button>
     </div>
 
-    <pre *ngIf="debug">{{formGroup.value | json}}</pre>
-    <pre *ngIf="debug">{{formGroup.status | json}}</pre>
+    <formstate *ngIf="debug" [formGroup]="formGroup"></formstate>
 
   </form>
 </div>

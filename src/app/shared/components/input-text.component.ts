@@ -80,8 +80,6 @@ export class InputTextComponent implements ControlValueAccessor, OnInit, OnDestr
     if (this.elementRef) {
       this.elementRef.nativeElement.value = value;
     }
-
-
     // console.log('text write: ' + this.fieldvalue);
   }
 

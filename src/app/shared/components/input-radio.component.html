@@ -8,7 +8,9 @@
         </label>
       </span>
 
-      <mat-radio-group [value]="valuefield"
+      <mat-radio-group
+        [value]="fieldvalue"
+        [disabled]="readonly"
         (change)="onChange($event.value)"
         (blur)="onTouched()">
         <mat-radio-button *ngFor="let key of keys" [value]="key">
