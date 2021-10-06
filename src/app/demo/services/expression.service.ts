@@ -59,9 +59,10 @@ class UnaryNode extends ExpressionNode {
 class BinaryNode extends ExpressionNode {
 
   public static  operators = [
-      '*', '/', '+', '-',
-      '>', '<', '<=', '>=', '!=', '=',
-      'and', 'or',
+    '*=', '=*', '*=*',
+    '*', '/', '+', '-',
+    '>', '<', '<=', '>=', '!=', '=',
+    'and', 'or',
   ];
 
   public left: ExpressionNode;
@@ -79,8 +80,16 @@ class BinaryNode extends ExpressionNode {
   }
 
   compute(context) {
-      const l: any = this.left.compute(context);
-      const r: any = this.right.compute(context);
+      let l: any = this.left.compute(context);
+      let r: any = this.right.compute(context);
+
+      if (typeof l === 'string') {
+        l = l.toLowerCase();
+      }
+
+      if (typeof r === 'string') {
+        r = r.toLowerCase();
+      }
 
       switch (this.op.toLowerCase()) {
           // logic operators
@@ -94,6 +103,11 @@ class BinaryNode extends ExpressionNode {
           case '!=': return l !== r;
           case '>': return l > r;
           case '<': return l < r;
+
+          // match operators
+          case '=*': return l.startsWith(r);
+          case '*=': return l.endsWith(r);
+          case '*=*': return l.contains(r);
 
           // computational operators
           case '+': return l + r;

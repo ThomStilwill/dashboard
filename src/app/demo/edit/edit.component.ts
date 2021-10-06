@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '../../shared/components/select-item';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-edit',
@@ -24,7 +25,7 @@ export class EditComponent implements OnInit {
     truck: 'Truck'
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dialog: MatDialog) {
 
     this.form = this.fb.group({
       name: ['', [Validators.required,
@@ -59,6 +60,17 @@ export class EditComponent implements OnInit {
         isReadOnly: true
       }
     );
+  }
+
+  showDialog() {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      height: '400px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   onReset(data) {

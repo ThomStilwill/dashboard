@@ -5,10 +5,6 @@
       "name": "Resources",
       "items": [
         {
-          "title": "Google",
-          "href": "http://www.google.com"
-        },
-        {
           "title": "Yahoo",
           "href": "www.yahoo.com"
         },
@@ -17,16 +13,20 @@
           "href": "http://www.microsoft.com"
         },
         {
+          "title": "qwerty",
+          "href": "werwwerwerw"
+        },
+        {
           "title": "Pluralsite 2",
           "href": "https://www.pluralsight.com/"
         },
         {
-          "title": "ggg",
-          "href": "asdadsda"
+          "title": "Google",
+          "href": "http://www.google.com"
         },
         {
-          "title": "qwerty",
-          "href": "werwwerwerw"
+          "title": "ggg",
+          "href": "asdadsda"
         }
       ]
     },
@@ -35,20 +35,20 @@
       "name": "Development",
       "items": [
         {
-          "title": "Angular",
-          "href": "http://www.angulario.com"
-        },
-        {
-          "title": "Angular 2 Standards",
-          "href": "https://github.com/johnpapa/angular-styleguide/blob/master/a2/notes.md"
-        },
-        {
           "title": "Scotch IO",
           "href": "http://www.scotch.io"
         },
         {
+          "title": "Angular",
+          "href": "http://www.angulario.com"
+        },
+        {
           "title": "Material Icons",
           "href": "https://google.github.io/material-design-icons/"
+        },
+        {
+          "title": "Angular 2 Standards",
+          "href": "https://github.com/johnpapa/angular-styleguide/blob/master/a2/notes.md"
         },
         {
           "title": "Material Design",

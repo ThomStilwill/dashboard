@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon ./server/server",
+    "start": "ng serve",
+    "server": "nodemon ./server/server",
     "build": "ng build",
     "watch": "ng build --watch",
     "serve": "ng serve",
