@@ -13,7 +13,8 @@ import { InputRadioComponent } from './components/input-radio.component';
 import { FormService } from './services/form-service';
 import { FormstateComponent } from './formstate/formstate.component';
 import { DialogComponent } from './dialog/dialog.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormDialogComponent } from './form-dialog/form-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DialogComponent } from './dialog/dialog.component';
     ValidationMessagesComponent,
     FormComponent,
     FormstateComponent,
-    DialogComponent
+    DialogComponent,
+    FormDialogComponent
   ],
   exports: [
     ConfirmComponent,
@@ -35,11 +37,13 @@ import { DialogComponent } from './dialog/dialog.component';
     InputSelectComponent,
     InputCheckboxComponent,
     InputRadioComponent,
-    FormComponent
+    FormComponent,
+    FormDialogComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    FlexLayoutModule,
     ReactiveFormsModule
   ],
   entryComponents: [ConfirmComponent],
@@ -53,7 +57,7 @@ export class SharedModule {
     }
   }
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
       providers: [ ]

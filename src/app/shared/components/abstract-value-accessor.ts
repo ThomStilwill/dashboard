@@ -1,7 +1,11 @@
-import { forwardRef, Input, Injector, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { forwardRef, Input, Injector, OnInit, AfterViewInit, ViewChild, Component } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, NG_VALUE_ACCESSOR, AbstractControl, NgControl } from '@angular/forms';
-import { MatFormFieldControl, MatInput } from '@angular/material';
+import { MatInput } from '@angular/material/input';
+import { MatFormFieldControl } from '@angular/material/form-field';
 
+@Component({
+  template: ''
+})
 export abstract class AbstractValueAccessor <T>
                 implements ControlValueAccessor {
 

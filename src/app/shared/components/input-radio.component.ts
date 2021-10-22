@@ -1,4 +1,4 @@
-import { MatRadioButton } from '@angular/material';
+import { MatRadioButton } from '@angular/material/radio';
 import { Component, Input, OnInit, ViewChild, forwardRef, OnDestroy } from '@angular/core';
 import { NG_VALUE_ACCESSOR, AbstractControl, ControlValueAccessor, ControlContainer, FormGroupDirective } from '@angular/forms';
 import { Subscription } from 'rxjs';

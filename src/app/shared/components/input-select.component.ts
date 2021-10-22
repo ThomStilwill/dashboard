@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnDestroy, Injector, forwardRef, ViewChild, A
 import { ControlContainer, AbstractControl, ControlValueAccessor , NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { FormService } from '../services/form-service';
 import { Subscription } from 'rxjs';
-import { MatSelect } from '@angular/material';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'input-select',

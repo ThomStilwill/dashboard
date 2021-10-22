@@ -8,13 +8,15 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { TableComponent } from './table/table.component';
 import { ExpressionService } from './services/expression.service';
+import { PersonComponent } from './person/person.component';
 
 
 @NgModule({
   declarations: [
     GuideComponent,
     EditComponent,
-    TableComponent
+    TableComponent,
+    PersonComponent
   ],
   imports: [
     CommonModule,

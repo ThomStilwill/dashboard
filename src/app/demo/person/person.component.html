@@ -1,0 +1,38 @@
+<form-dialog
+    [formGroup]="form"
+    (submitForm)="onSubmit($event)"
+    (resetForm)="onReset($event)" 
+>
+    <form [formGroup]="form">
+        <div fxLayout="row">
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput type="text"  formControlName="first" />
+            </mat-form-field>
+            </div>
+
+            <div fxLayout="row">
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text"  formControlName="last" />
+            </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between none">
+            <div fxFlex="50">
+                <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="text" formControlName="email" />
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="50">
+                <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput type="text"  formControlName="phone" />
+                </mat-form-field>
+            </div>
+        </div>
+        
+    </form>
+</form-dialog>

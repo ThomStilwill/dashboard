@@ -17,6 +17,7 @@ export class ItemsComponent implements OnInit {
   items: any;
   selecteditem: any;
   selectedindex: any;
+  editing: false;
 
   update = false;
 

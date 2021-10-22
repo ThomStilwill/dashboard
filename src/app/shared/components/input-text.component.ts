@@ -1,6 +1,6 @@
 import { Component,  Input,  OnInit,  AfterViewInit,  ViewChild,  Injector,  OnDestroy,  forwardRef, ElementRef} from '@angular/core';
 import { ControlValueAccessor,  NG_VALUE_ACCESSOR,  NgControl,  ControlContainer,  AbstractControl} from '@angular/forms';
-import { MatInput } from '@angular/material';
+import { MatInput } from '@angular/material/input';
 import { FormService } from '../services/form-service';
 import { Subscription } from 'rxjs';
 

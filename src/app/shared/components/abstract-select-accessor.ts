@@ -1,11 +1,15 @@
-import { forwardRef, Input, Injector, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { forwardRef, Input, Injector, OnInit, AfterViewInit, ViewChild, Component } from '@angular/core';
 import { ControlContainer, ControlValueAccessor
   , NG_VALUE_ACCESSOR, AbstractControl, NgControl } from '@angular/forms';
-import { MatFormFieldControl, MatSelect } from '@angular/material';
+import { MatSelect } from '@angular/material/select';
+import { MatFormFieldControl } from '@angular/material/form-field';
 
+@Component({
+  template: ''
+})
 export abstract class AbstractSelectAccessor <T>
                 implements ControlValueAccessor {
-
+ 
     @Input() formControlName: string;
     @Input() label: string;
     @Input() hint: string;

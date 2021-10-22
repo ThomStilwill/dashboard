@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '../../shared/components/select-item';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { PersonComponent } from '../person/person.component';
 
 @Component({
   selector: 'app-edit',
@@ -62,16 +62,31 @@ export class EditComponent implements OnInit {
     );
   }
 
-  showDialog() {
-    let dialogRef = this.dialog.open(DialogComponent, {
-      height: '400px',
-      width: '600px',
-    });
+// https://material.angular.io/components/dialog/overview
 
+  showDialog() {
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    //dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    dialogConfig.data  = { 
+      title: 'Edit Person',
+      first: 'Rob', 
+      last: 'Smith', 
+      email: 'robsmith@gmail.com', 
+      phone: '888-555-1212'
+    }
+
+    const dialogRef = this.dialog.open(PersonComponent, dialogConfig);
+    
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+
   }
+
 
   onReset(data) {
     this.form.reset();

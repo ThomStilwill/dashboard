@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
 import periodic from './periodic.json';
-import { ExpressionService } from '../services/expression.service.js';
+import { ExpressionService } from '../services/expression.service';
 
 export class PeriodicElement {
   name: string;
