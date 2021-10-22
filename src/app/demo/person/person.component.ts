@@ -29,12 +29,11 @@ export class PersonComponent implements OnInit {
     this.form.reset();
     this.form.markAsPristine();
     this.form.markAsUntouched();
-    console.log('reset: ' + JSON.stringify(this.form.value));
+    console.log('reset: ' + JSON.stringify(data));
   }
 
   onSubmit(data) {
-    console.log('saved: ' + JSON.stringify(this.form.value));
-    this.dialogRef.close();
+    console.log('saved: ' + JSON.stringify(data));
+    this.dialogRef.close(data);
   }
-
 }

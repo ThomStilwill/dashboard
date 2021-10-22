@@ -62,31 +62,7 @@ export class EditComponent implements OnInit {
     );
   }
 
-// https://material.angular.io/components/dialog/overview
-
-  showDialog() {
-    const dialogConfig = new MatDialogConfig();
-    // The user can't close the dialog by clicking outside its body
-    dialogConfig.disableClose = true;
-    dialogConfig.id = "modal-component";
-    //dialogConfig.height = "350px";
-    dialogConfig.width = "600px";
-    dialogConfig.data  = { 
-      title: 'Edit Person',
-      first: 'Rob', 
-      last: 'Smith', 
-      email: 'robsmith@gmail.com', 
-      phone: '888-555-1212'
-    }
-
-    const dialogRef = this.dialog.open(PersonComponent, dialogConfig);
-    
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-
-  }
-
+ 
 
   onReset(data) {
     this.form.reset();
@@ -101,4 +77,23 @@ export class EditComponent implements OnInit {
     console.log('saved: ' + JSON.stringify(this.form.value));
   }
 
+  showDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    //dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    dialogConfig.data  = { 
+      title: 'Edit Person',
+      first: 'Rob', 
+      last: 'Smith', 
+      email: 'robsmith@gmail.com', 
+      phone: '888-555-1212'
+    }
+
+    const dialogRef = this.dialog.open(PersonComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

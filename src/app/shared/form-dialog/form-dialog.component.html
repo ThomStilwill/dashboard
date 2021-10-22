@@ -1,15 +1,21 @@
-<div class="mat-dialog-title">{{title}}</div>
-<button mat-button mat-dialog-close> <i class="material-icons">close</i></button>
+<div class="dialog-title">
+    <span>{{title}}</span>
+    <button mat-button mat-dialog-close> 
+        <i class="material-icons">close</i>
+    </button>
+</div>
+
 <mat-dialog-content class="mat-typography">
 
     <ng-content></ng-content>
 
 </mat-dialog-content>
+
 <mat-dialog-actions >
     <button mat-button type="button" title="Cancel" (click)="reset()">
         <i class="material-icons">clear</i>
-      </button>
-      <button mat-button type="button" [disabled]="!formGroup.valid" title="Save"  (click)="submit()">
-          <i class="material-icons">check</i>
-        </button>
+    </button>
+    <button mat-button type="button" [disabled]="!formGroup.valid" title="Save"  (click)="submit()">
+        <i class="material-icons">check</i>
+    </button>
 </mat-dialog-actions>

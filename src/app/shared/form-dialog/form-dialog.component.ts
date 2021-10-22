@@ -29,11 +29,9 @@ export class FormDialogComponent implements OnInit {
       return;
     }
     this.submitForm.emit(this.formGroup.value);
-
   }
 
   reset() {
     this.resetForm.emit(this.formGroup.value);
   }
-
 }
