@@ -62,8 +62,6 @@ export class EditComponent implements OnInit {
     );
   }
 
- 
-
   onReset(data) {
     this.form.reset();
     this.initModel();
@@ -78,22 +76,27 @@ export class EditComponent implements OnInit {
   }
 
   showDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.id = "modal-component";
-    //dialogConfig.height = "350px";
-    dialogConfig.width = "600px";
-    dialogConfig.data  = { 
-      title: 'Edit Person',
-      first: 'Rob', 
-      last: 'Smith', 
-      email: 'robsmith@gmail.com', 
-      phone: '888-555-1212'
+    let dialogConfig: MatDialogConfig = 
+    {
+      disableClose: true,
+      id: "modal-component",
+      width: "600px",
+      data: { 
+        title: 'Edit Person',
+        model: {
+          first: 'Rob', 
+          last: 'Smith', 
+          email: 'robsmith@gmail.com', 
+          phone: '888-555-1212',
+          note: '',
+          description: ''
+        }
+      }
     }
 
-    const dialogRef = this.dialog.open(PersonComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(PersonComponent, dialogConfig)
+               .afterClosed().subscribe(result => {
+                  console.debug(`Dialog result: ${result}`);
+                });
   }
 }

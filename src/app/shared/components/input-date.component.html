@@ -1,33 +1,33 @@
-<mat-form-field
-  appearance="fill"
-  [hideRequiredMarker]="false"
-  [floatLabel]="true"
-  [class.field-readonly]="readonly">
-  <mat-label>{{label}}</mat-label>
+  <mat-form-field
+    appearance="fill"
+    [hideRequiredMarker]="false"
+    [floatLabel]="true"
+    [class.field-readonly]="readonly">
+    <mat-label>{{label}}</mat-label>
 
-  <input
-      matInput
-      placeholder="{{placeholder}}"
-      [value]="fieldvalue"
-      [readonly]="readonly"
-      [matDatepicker]="picker"
-      (input)="onChange($event.target.value)"
-      (keyup)="onChange($event.target.value)"
-      (focus)="$event.target.select()"
-      (blur)="onTouched()"
-      (dateChange)="onDateChange($event)"/>
+    <input 
+        matInput
+        placeholder="{{placeholder}}"
+        [value]="fieldvalue"
+        [readonly]="readonly"
+        [matDatepicker]="picker"
+        (input)="onChange($event.target.value)"
+        (keyup)="onChange($event.target.value)"
+        (focus)="$event.target.select()"
+        (blur)="onTouched()"
+        (dateChange)="onDateChange($event)"/>
 
-  <mat-datepicker-toggle [hidden]="readonly" matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker [hidden]="readonly"></mat-datepicker>
+    <mat-datepicker-toggle [hidden]="readonly" matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker [hidden]="readonly"></mat-datepicker>
 
-  <mat-hint>{{hint}}</mat-hint>
-  <mat-error>
-    <validation-messages
-      controlName="{{formControlName}}"
-      [control]="control"
-      label="{{label}}"
-      [validationMessages]="validationMessages">
-    </validation-messages>
+    <mat-hint>{{hint}}</mat-hint>
+    <mat-error>
+      <validation-messages
+        controlName="{{formControlName}}"
+        [control]="control"
+        label="{{label}}"
+        [validationMessages]="validationMessages">
+      </validation-messages>
 
-  </mat-error>
-</mat-form-field>
+    </mat-error>
+  </mat-form-field>

@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TableComponent } from './table/table.component';
 import { ExpressionService } from './services/expression.service';
 import { PersonComponent } from './person/person.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PersonComponent } from './person/person.component';
     MaterialModule,
     ReactiveFormsModule,
     GuideRoutingModule,
+    FlexLayoutModule,
     SharedModule.forRoot()
   ],
   providers: [

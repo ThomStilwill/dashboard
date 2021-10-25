@@ -1,55 +1,60 @@
-<edit-form
+<edit-form 
   [formGroup]="form"
   title="Demo Form"
   debug="true"
   (submitForm)="onSubmit($event)"
-  (resetForm)="onReset($event)" >
+  (resetForm)="onReset($event)" 
+  fxLayout="column">
 
-  <input-text
-    formControlName="name"
-    label="Name"
-    hint="Enter the name"
-    placeholder="any name...">
-  </input-text>
+  <div fxFlex fxLayout="column" fxLayoutGap="20px">
+    <input-text fxFlex
+      formControlName="name"
+      label="Name"
+      hint="Enter the name"
+      placeholder="any name...">
+    </input-text>
 
-  <input-text
-    formControlName="description"
-    label="Description"
-    hint="Enter the description"
-    placeholder="any description will do...">
-  </input-text>
+    <input-text fxFlex
+      formControlName="description"
+      label="Description"
+      hint="Enter the description"
+      placeholder="any description will do...">
+    </input-text>
+  </div>
 
-  <input-date
-    class="form-field-small"
-    formControlName="date"
-    label="Start Date"
-    hint="Enter a date"
-    placeholder="any date...">
-  </input-date>
+  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutAlign="space-between" >
+    
+      <input-date fxFlex
+        formControlName="date"
+        label="Start Date"
+        hint="Enter a date"
+        placeholder="any date...">
+      </input-date>
+    
+      <input-date fxFlex
+        formControlName="enddate"
+        label="End Date"
+        hint="Enter a date"
+        placeholder="The end date.">
+      </input-date>
 
-  <input-date
-    class="form-field-small"
-    formControlName="enddate"
-    label="End Date"
-    hint="Enter a date"
-    placeholder="The end date.">
-  </input-date>
+      <input-select fxFlex
+        class="form-field-small"
+        formControlName="make"
+        [items]="makes"
+        label="Make"
+        hint="Select a make."
+        placeholder="-select-">
+      </input-select>
+    
+  </div>
 
-  <input-select
-    class="form-field-small"
-    formControlName="make"
-    [items]="makes"
-    label="Make"
-    hint="Select a make."
-    placeholder="-select-">
-  </input-select>
-
-  <input-checkbox
+  <input-checkbox fxFlex
     formControlName="isCommercial"
     label="Commercial Vehicle">
   </input-checkbox>
 
-  <input-radio
+  <input-radio fxFlex
     formControlName="type"
     [items]="types"
     label="Vehicle Type">
