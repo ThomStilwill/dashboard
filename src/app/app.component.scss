@@ -9,5 +9,34 @@ mat-toolbar-row {
       }
     }
   }
+}
 
+.view {
+  height:100%;
+  //background-color: navajowhite;
+  //background-color: olive;
+}
+
+header {
+
+}
+
+main {
+  //background-color: lightgray;
+  overflow-y: auto;
+  padding: 10px 10px 0 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  height:40px;
+  line-height: 40px;
+  padding: 0 10px;
+  background-color: lightslategray;
+
+  div{
+    height:inherit;
+    line-height: inherit;
+  }
 }

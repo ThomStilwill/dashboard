@@ -1,12 +1,12 @@
-<edit-form 
+<edit-form
   [formGroup]="form"
   title="Demo Form"
   debug="true"
   (submitForm)="onSubmit($event)"
-  (resetForm)="onReset($event)" 
+  (resetForm)="onReset($event)"
   fxLayout="column">
 
-  <div fxFlex fxLayout="column" fxLayoutGap="20px">
+  <div fxLayout="row"  fxLayoutGap="20px" fxLayoutAlign="space-between">
     <input-text fxFlex
       formControlName="name"
       label="Name"
@@ -20,17 +20,27 @@
       hint="Enter the description"
       placeholder="any description will do...">
     </input-text>
+
+    <input-select fxFlex
+      class="form-field-small"
+      formControlName="make"
+      [items]="makes"
+      label="Make"
+      hint="Select a make."
+      placeholder="-select-">
+    </input-select>
+
   </div>
 
-  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutAlign="space-between" >
-    
+  <div fxLayout="row"fxLayoutGap="20px" fxLayoutAlign="start" >
+
       <input-date fxFlex
         formControlName="date"
         label="Start Date"
         hint="Enter a date"
         placeholder="any date...">
       </input-date>
-    
+
       <input-date fxFlex
         formControlName="enddate"
         label="End Date"
@@ -38,33 +48,26 @@
         placeholder="The end date.">
       </input-date>
 
-      <input-select fxFlex
-        class="form-field-small"
-        formControlName="make"
-        [items]="makes"
-        label="Make"
-        hint="Select a make."
-        placeholder="-select-">
-      </input-select>
-    
+      <input-checkbox fxFlex
+      formControlName="isCommercial"
+      label="Commercial Vehicle">
+    </input-checkbox>
+
+    <input-radio fxFlex
+      formControlName="type"
+      label="Vehicle Type"
+      [items]="types"
+      label="Vehicle Type">
+    </input-radio>
+
   </div>
 
-  <input-checkbox fxFlex
-    formControlName="isCommercial"
-    label="Commercial Vehicle">
-  </input-checkbox>
+  <!-- <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start" >
+  </div> -->
 
-  <input-radio fxFlex
-    formControlName="type"
-    [items]="types"
-    label="Vehicle Type">
-  </input-radio>
-
-<br>
-
-<button mat-button type="button" title="Dialog"  (click)="showDialog()">
-  Dialog
-</button>
+  <button mat-button type="button" title="Dialog"  (click)="showDialog()">
+    Dialog
+  </button>
 
 </edit-form>
 

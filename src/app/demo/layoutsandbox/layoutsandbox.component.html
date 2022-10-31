@@ -1,0 +1,31 @@
+<div class="outer" fxLayout="column">
+
+    <ng-template
+        *ngFor="let i of fields; let index = index">
+
+        <ng-template *ngIf="i.divs.length == 0 else multiple">
+            <div class="content" 
+                fxFlex 
+                fxLayout="row" 
+                fxLayout.lt-sm="column"
+                [style.background-color]="i.color" >
+                Field: {{index}}  {{i.color}}  {{i.divs.length}} 
+            </div>
+        </ng-template>
+        
+        <ng-template #multiple>
+            <div class="content" 
+                fxFlex 
+                fxLayout="row" 
+                fxLayout.lt-sm="column">
+                <div class="content" 
+                    fxFlex 
+                    [style.background-color]="j" 
+                    *ngFor="let j of i.divs; let jndex = index">
+                    SubField: {{jndex}} {{j}}
+                </div>
+            </div>
+        </ng-template>
+
+    </ng-template>
+</div>

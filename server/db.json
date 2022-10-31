@@ -5,28 +5,24 @@
       "name": "Resources",
       "items": [
         {
-          "title": "Yahoo",
-          "href": "www.yahoo.com"
+          "title": "Dvorak",
+          "href": "keyboard D"
+        },
+        {
+          "title": "Something Else",
+          "href": "asdadsda"
+        },
+        {
+          "title": "Angular",
+          "href": "http://www.angulario.com"
         },
         {
           "title": "Microsoft 2",
           "href": "http://www.microsoft.com"
         },
         {
-          "title": "qwerty",
-          "href": "werwwerwerw"
-        },
-        {
           "title": "Pluralsite 2",
           "href": "https://www.pluralsight.com/"
-        },
-        {
-          "title": "Google",
-          "href": "http://www.google.com"
-        },
-        {
-          "title": "ggg",
-          "href": "asdadsda"
         }
       ]
     },
@@ -34,14 +30,6 @@
       "id": 2,
       "name": "Development",
       "items": [
-        {
-          "title": "Scotch IO",
-          "href": "http://www.scotch.io"
-        },
-        {
-          "title": "Angular",
-          "href": "http://www.angulario.com"
-        },
         {
           "title": "Material Icons",
           "href": "https://google.github.io/material-design-icons/"
@@ -51,8 +39,20 @@
           "href": "https://github.com/johnpapa/angular-styleguide/blob/master/a2/notes.md"
         },
         {
+          "title": "Yahoo",
+          "href": "www.yahoo.com"
+        },
+        {
           "title": "Material Design",
           "href": "https://material.angular.io/guide/getting-started"
+        },
+        {
+          "title": "Google",
+          "href": "http://www.google.com"
+        },
+        {
+          "title": "Scotch IO",
+          "href": "http://www.scotch.io"
         },
         {
           "title": "Alligator.io",

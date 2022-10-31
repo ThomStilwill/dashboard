@@ -1,5 +1,13 @@
+<div fxLayout="column" class="view">
 
-<a [routerLink]="['edit']" routerLinkActive="active-link">Edit</a>
-<a [routerLink]="['table']" routerLinkActive="active-link">Table</a>
+    <div fxFlex="none">
+        <a [routerLink]="['edit']" routerLinkActive="active-link">Edit</a>
+        <a [routerLink]="['table']" routerLinkActive="active-link">Table</a>
+        <a [routerLink]="['layout']" routerLinkActive="active-link">Layout Sandbox</a>
+    </div>
 
-<router-outlet></router-outlet>
+    <div class="guide-content" fxFlex>
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

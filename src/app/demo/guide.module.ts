@@ -10,6 +10,7 @@ import { TableComponent } from './table/table.component';
 import { ExpressionService } from './services/expression.service';
 import { PersonComponent } from './person/person.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LayoutsandboxComponent } from './layoutsandbox/layoutsandbox.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     GuideComponent,
     EditComponent,
     TableComponent,
-    PersonComponent
+    PersonComponent,
+    LayoutsandboxComponent
   ],
   imports: [
     CommonModule,

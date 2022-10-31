@@ -1,21 +1,26 @@
-<header>
-<mat-toolbar>
-  <mat-toolbar-row>
-    <h2>Dashboard</h2>
-    <div fxFlex fxLayout fxLayoutAlign="flex-end">
-      <ul fxLayout fxLayoutGap="20px">
-          <li><button [routerLink]="['home']" mat-button routerLinkActive="active-link">Home</button></li>
-          <li><button [routerLink]="['links']" mat-button routerLinkActive="active-link">Links</button></li>
-          <li><button [routerLink]="['guide']" mat-button routerLinkActive="active-link">Guide</button></li>
-      </ul>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
-</header>
+<div fxLayout="column" class="view">
+  <header fxFlex="none">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <h2>Dashboard</h2>
+        <div fxFlex fxLayout fxLayoutAlign="flex-end">
+          <ul fxLayout fxLayoutGap="20px">
+              <li><button [routerLink]="['home']" mat-button routerLinkActive="active-link">Home</button></li>
+              <li><button [routerLink]="['links']" mat-button routerLinkActive="active-link">Links</button></li>
+              <li><button [routerLink]="['guide']" mat-button routerLinkActive="active-link">Guide</button></li>
+          </ul>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+  <main fxFlex>
+    <router-outlet></router-outlet>
+  </main>
 
-<footer>
-</footer>
+  <footer fxFlex="nogrow">
+    <div>Thom's Crazy Angular Ideas</div>
+    <div>Middle Earth</div>
+    <div>&copy; 2022</div>
+  </footer>
+</div>

@@ -41,6 +41,10 @@ mat-radio-button {
   margin: 5px;
 }
 
+input-date {
+  max-width: 10em;
+}
+
 input-text[ng-reflect-readonly=true]{
   .mat-form-field-flex {
     background-color:transparent;
@@ -50,3 +54,4 @@ input-text[ng-reflect-readonly=true]{
 .mat-form-field {
   display: block!important;
 }
+
