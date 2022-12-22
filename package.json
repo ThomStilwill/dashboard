@@ -55,6 +55,6 @@
     "@angular/language-service": "~8.2.14",
     "@types/jasminewd2": "~2.0.3",
     "json-server": "^0.15.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^9.0.0"
   }
 }
